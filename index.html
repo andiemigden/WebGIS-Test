@@ -14,7 +14,8 @@
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
      crossorigin=""/>
-  
+     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
      
      <!--LEAFLET.JS-->
      <script
@@ -22,8 +23,6 @@
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
         crossorigin=""
     ></script>
-    <script src="https://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-     <link rel="stylesheet" href="https://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 
     <script src = 'https://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.js' ></script>
     <link href = 'https://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.css' rel='stylesheet'/>
@@ -180,12 +179,13 @@
             justify-content: center;
             align-items: center;
             color: #171717;
+            height: 95%;
         }
 
         #grid-for-map .box-for-map:nth-of-type(1) {
             justify-content: space-around;
             flex-basis: 100%;
-            height: 5vh;
+            height: 5%;
         }
 
         #grid-for-map .box-for-map:nth-of-type(2) {
@@ -274,6 +274,23 @@
 
         .leaflet-tooltip {font-size: 10px;}
 
+        ul {
+            font-size: 15px;
+            color: #ffffff;
+        }
+
+        h5 {
+            font-size: 20px;
+        }
+
+        h3 {
+            font-size: 25px;
+        }
+
+        h3 {
+            color: #ffffff;
+        }
+
         /* hellow */
 
         #flex {
@@ -331,13 +348,23 @@
 
         <div class="box">
             <div class = "box-content">
-                <h5>WELCOME TO THE ELECTRIC VEHICLE DASHBOARD</h5>
+                <h2>WELCOME TO THE ELECTRIC VEHICLE DASHBOARD</h2>
             </div>
         </div>
 
         <div class="box">
             <div class = "box-content">
-                <h5>PROJECT SUMMARY WILL GO HERE</h5>
+                <h3>MAP SUMMARY</h3>
+                <br>
+                <br>
+                <h5>Map 1: EVs Per Million Population</h5>
+                <ul>Map 1 is an indication of <b>EV Consumer market maturaty</b> at the state level</ul>
+                <br>
+                <h5>Map 2: Num. Public Charging Outlets Per 100 EVs and % Change in Num. Public Charging Outlets Per 100 EVs</h5>
+                <ul>Map 2 is an indication of <b>EV Supply Equipment (EVSE) infrastructure development</b> and how it's improved or changed over the course of two months at the state level</ul>
+                <br>
+                <h5>Map 3: Local Level EV Statistics and Demographics at the ZIP Code Level</h5>
+                <ul>Map 3 dives into the <b>deployment of EVSE</b> relative to concentrations of different races/ethnicities</ul>
             </div>
         </div>
 
@@ -391,7 +418,7 @@
                 <!--this is the SECOND DIV that will be hidden unless button is clicked-->
                 <div class="box-for-map">
                     <div class = "box-for-map-content" id="map_2"> 
-                        <div id="map_2" style="width: 100%; height: 100%; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
+                        <div id="map_2" style="width: 100%; height: 750px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
                         leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
                         <div class = "legend leaflet-control leaflet-bottom leaflet-left">
                             <h4>NUMBER OF CHARGING OUTLETS PER 100 EVS</h4>
@@ -460,8 +487,17 @@
                 <!--this is the THIRD DIV that will be hidden unless button is clicked-->
                 <div class="box-for-map">
                     <div class = "box-for-map-content" id="map_3"> 
-                        <div id="map_3" style="width: 100%; height: 100%; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
+                        <div id="map_3" style="width: 100%; height: 750px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
                         leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
+                        <div class = "legend leaflet-control leaflet-bottom leaflet-left">
+                            <h4>ZIP CODE BLUE AND GREEN OUTLINES</h4>
+                            <i style="background: #194D33"></i> 
+                            <span>IF NO L2 OR DCFC OUTLETS AVAIL</span>
+                            <br>
+                            <i style="background: #0B29FB"></i>
+                            <span>IF FIVE OR LESS L2 OR DCFC OUTLETS AVAIL</span>
+                            <br>
+                        </div>
                         </div> 
                     </div>
                 </div>                                                                   
@@ -605,44 +641,44 @@
         EVLayer.addData(data);
     });
 
-    fetch('./MASTER_us_states.geojson')
-    .then((response) => {
-        return response.json();
-    })
-    .then((data) => {
+    // fetch('./MASTER_us_states.geojson')
+    // .then((response) => {
+    //     return response.json();
+    // })
+    // .then((data) => {
 
 
-        console.log(data);
-        var maxVal = -Infinity, minVal = Infinity;
-        var allVals = [];
+    //     console.log(data);
+    //     var maxVal = -Infinity, minVal = Infinity;
+    //     var allVals = [];
 
-        data.features.forEach((f, i) => {
-            if (f.properties.count_evs > 500) {
-                maxVal = Math.max(maxVal, f.properties.evs_per_mi);
-                minVal = Math.min(minVal, f.properties.evs_per_mi);
-                allVals.push(f.properties.evs_per_mi);
-            }
-        });  
-        var valRange = maxVal - minVal;
-        var colIntpl = d3.scaleQuantile()
-            .domain(allVals)
-            .range(d3.schemeBlues[9]);
+    //     data.features.forEach((f, i) => {
+    //         if (f.properties.count_evs > 500) {
+    //             maxVal = Math.max(maxVal, f.properties.evs_per_mi);
+    //             minVal = Math.min(minVal, f.properties.evs_per_mi);
+    //             allVals.push(f.properties.evs_per_mi);
+    //         }
+    //     });  
+    //     var valRange = maxVal - minVal;
+    //     var colIntpl = d3.scaleQuantile()
+    //         .domain(allVals)
+    //         .range(d3.schemeBlues[9]);
 
-        EVLayer.options.style = (f) => {
-            return {
-                fillColor: colIntpl(f.properties.evs_per_mi),
-                color: "#ffffff",
-                weight: 1,
-                fillOpacity: 1
-            }
-        };       
-        EVLayer.myExtraData = [maxVal, minVal, valRange,
-            d3.scalePow()
-                .exponent(0.5)
-                .domain([0, maxVal])
-                .range([0, 20])];
-        EVLayer.addData(data);
-    });
+    //     EVLayer.options.style = (f) => {
+    //         return {
+    //             fillColor: colIntpl(f.properties.evs_per_mi),
+    //             color: "#ffffff",
+    //             weight: 1,
+    //             fillOpacity: 1
+    //         }
+    //     };       
+    //     EVLayer.myExtraData = [maxVal, minVal, valRange,
+    //         d3.scalePow()
+    //             .exponent(0.5)
+    //             .domain([0, maxVal])
+    //             .range([0, 20])];
+    //     EVLayer.addData(data);
+    // });
 
    
     //SCRIPT FOR DROP DOWN
@@ -1041,13 +1077,17 @@
                     ZIPs_NYC_asian.closePopup(),
                     ZIPs_NYC_hisp.resetStyle(e.target),
                     ZIPs_NYC_hisp.closeTooltip(),
-                    ZIPs_NYC_hisp.closePopup()
+                    ZIPs_NYC_hisp.closePopup(),
+                    ZIPs_NYC_pop_den.resetStyle(e.target),
+                    ZIPs_NYC_pop_den.closeTooltip(),
+                    ZIPs_NYC_pop_den.closePopup()
                 },
                 click: (e) => {
                     ZIPs_NYC_black.closeTooltip()
                     ZIPs_NYC_asian.closeTooltip()
                     ZIPs_NYC_white.closeTooltip()
                     ZIPs_NYC_hisp.closeTooltip()
+                    ZIPs_NYC_pop_den.closeTooltip()
                 }
             });             
             };
@@ -1156,6 +1196,16 @@
                 if (d<=77.79) return "#930";
             }
 
+            function get_fillColor_pop_den(d){
+                if (d<=11184.577384) return "#fff";
+                if (d<=18803.709219) return "#eef";
+                if (d<=29704.115637) return "#cce";
+                if (d<=39317.450304) return "#aad";
+                if (d<=52509.213375) return "#88c";
+                if (d<=72058.617103) return "#75a";
+                if (d<=508254.462900) return "#518";
+            }
+
 
             function get_fillColor_white(d){
                 if (d<=12.755655) return "#ffe";
@@ -1238,6 +1288,27 @@
                 return div;
             };
 
+            var legend_pop_den = L.control({position: 'bottomright', opacity: 0.8});
+            legend_pop_den.onAdd = function (map_3) {
+
+                var div = L.DomUtil.create('div', 'info legend'),
+                Dens_Tot_P = [0, 11185, 18804, 29704, 39317,
+                52509, 72058],
+                    labels = ["Population Density (Pop/Sq Mi)"],
+                    from, to;
+
+                for (var i = 0; i < Dens_Tot_P.length; i++) {
+                    from = Dens_Tot_P[i];
+                    to = Dens_Tot_P[i + 1];
+
+                    labels.push(
+                        '<i style="background:' + get_fillColor_pop_den(from + 1) + '"></i> ' +
+                        from + (to ? '&ndash;' + to : '+'));
+                }
+
+                div.innerHTML = labels.join('<br>');
+                return div;
+            };
             
             var legend_white = L.control({position: 'bottomright', opacity: 0.8});
             legend_white.onAdd = function (map_3) {
@@ -1347,6 +1418,12 @@
                 color: '#ffffff', 
                 onEachFeature: onEachFeatureEVs_ZIPs_outlets,
                 }).addTo(map_3);
+            
+            var ZIPs_NYC_pop_den = L.geoJSON(null, {           
+                color: '#ffffff', 
+                onEachFeature: onEachFeatureEVs_ZIPs,
+            })
+            
             var ZIPs_NYC_asian = L.geoJSON(null, {           
                 color: '#ffffff', 
                 onEachFeature: onEachFeatureEVs_ZIPs,
@@ -1415,12 +1492,70 @@
             });
             //END ZIPS OUTLET LAYER
 
+            //ZIPS POP DENSITY LAYER    
+            $.getJSON("./zips_select_NYC_CLEAN2.geojson", function (data) {
+                console.log(data);
+                //console.log(data.features.length);
+
+                ZIPs_NYC_pop_den.addData(data);
+            });
+
+            fetch('./zips_select_NYC_CLEAN2.geojson')
+            .then((response) => {
+            return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                var maxVal = -Infinity, minVal = Infinity;
+                var allVals = [];
+
+                data.features.forEach((f, i) => {
+                    maxVal = Math.max(maxVal, f.properties.Dens_Tot_P);
+                    minVal = Math.min(minVal, f.properties.Dens_Tot_P);
+                    allVals.push(f.properties.Dens_Tot_P);
+                });  
+                var valRange = maxVal - minVal;
+                var colIntpl = d3.scaleQuantile()
+                    .domain(allVals)
+                    .range(d3.schemePurples[7]);
+
+                function styleOutline(num_l2_dcf){
+                    if (num_l2_dcf==0){
+                        return "#194D33"
+                    }
+                    if (num_l2_dcf <6){
+                        return "#0B29FB"
+                    }
+                    return "#ffffff"
+                }
+
+                function styleWeight(num_l2_dcf){
+                    if (num_l2_dcf<6){
+                        return 2.5
+                    }
+                    return 1
+                }
+
+                data.features.forEach((f,i) =>{
+                    ZIPs_NYC_pop_den.options.style = (f) => {
+                        return {
+                            fillColor: colIntpl(f.properties.Dens_Tot_P),
+                            color: styleOutline(f.properties.num_l2_dcf),
+                            weight: styleWeight(f.properties.num_l2_dcf),
+                            fillOpacity: .9
+                    };
+                    }
+                    ZIPs_NYC_pop_den.addData(data);
+                });
+            });
+            //END ZIPS POP DENSITY LAYER
+
             //ZIPS PCT ASIAN LAYER    
             $.getJSON("./zips_select_NYC_CLEAN2.geojson", function (data) {
                 console.log(data);
                 //console.log(data.features.length);
 
-                ZIPs_NYC_black.addData(data);
+                ZIPs_NYC_asian.addData(data);
             });
 
             fetch('./zips_select_NYC_CLEAN2.geojson')
@@ -1536,7 +1671,7 @@
                 console.log(data);
                 //console.log(data.features.length);
 
-                ZIPs_NYC_black.addData(data);
+                ZIPs_NYC_hisp.addData(data);
             });
 
             fetch('./zips_select_NYC_CLEAN2.geojson')
@@ -1687,6 +1822,7 @@
         
            var overlayMaps = {
             "Num. EV Charging Outlets by ZIP": ZIPs_NYC_outlets,
+            "Pop Density (Pop/Sq Mi) by ZIP": ZIPs_NYC_pop_den,
             "Percent Asian by ZIP": ZIPs_NYC_asian,
             "Percent Black by ZIP": ZIPs_NYC_black,
             "Percent Hispanic by ZIP": ZIPs_NYC_hisp,
@@ -1778,6 +1914,11 @@
                     ZIPs_NYC_outlets.bringToFront();
                     legend_outlets_size.addTo(map_3);
                     legend_oultets_color.addTo(map_3);
+                }
+                else if  (eventLayer.name === 'Pop Density (Pop/Sq Mi) by ZIP') {
+                    ZIPs_NYC_outlets.bringToFront();
+                    map_3.removeControl(currentLegend);
+                    currentLegend = legend_pop_den;
                 }
             }) 
         </script>
