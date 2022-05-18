@@ -316,7 +316,7 @@
      </style>
 
 <title>Final Project</title>
-<meta name="description" content="Write some words to describe your html page">
+<meta name="description" content="An interactive way to explore the EV industry in the US">
 <script>
     //EVENT FUNCTIONS
     $(document).ready(function(){
@@ -633,14 +633,6 @@
         }).addTo(map);
 
     
-    // $.getJSON("./MASTER_us_states.geojson", function (data) {
-
-    //     console.log(data);
-    //     //console.log(data.features.length);
-        
-    //     EVLayer.addData(data);
-    // });
-
     fetch('./MASTER_us_states.geojson')
     .then((response) => {
         return response.json();
@@ -791,9 +783,7 @@
             click: (e) => {
                 EVLayer2.closeTooltip()}
         });             
-        };
-
-
+    };
 
     var EVLayer2 = L.geoJSON(null, {
  
@@ -801,14 +791,20 @@
         onEachFeature: onEachFeatureEVs,
         }).addTo(map_2);
 
-    
-    $.getJSON("./MASTER_us_states.geojson", function (data) {
-
-        console.log(data);
-        //console.log(data.features.length);
         
-        EVLayer2.addData(data);
-    });
+    var EVLayer_pct = L.geoJSON(null, {
+        
+        color: '#ffffff', 
+        onEachFeature: onEachFeatureEVs_3,
+     });
+
+    // $.getJSON("./MASTER_us_states.geojson", function (data) {
+
+    //     console.log(data);
+    //     //console.log(data.features.length);
+        
+    //     EVLayer2.addData(data);
+    // });
 
     fetch('./MASTER_us_states.geojson')
     .then((response) => {
@@ -818,17 +814,30 @@
         console.log(data);
         var maxVal = -Infinity, minVal = Infinity;
         var allVals = [];
+        var allVals_pct =[];
+
+        var maxVal_pct = -Infinity, minVal_pct = Infinity;
 
         data.features.forEach((f, i) => {
             if (f.properties.ap_ratio_1 > 0) {
                 maxVal = Math.max(maxVal, f.properties.ap_ratio_1);
                 minVal = Math.min(minVal, f.properties.ap_ratio_1);
                 allVals.push(f.properties.ap_ratio_1);
+
+                maxVal_pct = Math.max(maxVal_pct, f.properties.change_p_1);
+                minVal_pct = Math.min(minVal_pct, f.properties.change_p_1);
+                allVals_pct.push(f.properties.change_p_1);
             }
         });  
         var valRange = maxVal - minVal;
+        var valRange_pct = maxVal_pct - minVal_pct;
+
         var colIntpl = d3.scaleQuantile()
             .domain(allVals)
+            .range(d3.schemeBlues[9]);
+
+        var colIntpl_pct = d3.scaleQuantile()
+            .domain(allVals_pct)
             .range(d3.schemeBlues[9]);
 
         function styleColor(outlets_per_100evs,count_evs){
@@ -840,7 +849,25 @@
             }
         }
 
+        function styleColor_pct(change_p_1,count_evs){                
+                if (change_p_1<0){
+                    return "#f2766f"
+                }
+                // if (count_evs>999.99){
+                return colIntpl(change_p_1)
+                // }
+            }
+        
         data.features.forEach((f,i) =>{
+            EVLayer_pct.options.style = (f) => {
+                    return {
+                        fillColor: styleColor_pct(f.properties.change_p_1),
+                        color: "#ffffff",
+                        weight: 1,
+                        fillOpacity: .8
+                    }
+                ;
+            }
             if (f.properties.count_evs > 1000) {
                 EVLayer2.options.style = (f) => {
                     return {
@@ -852,8 +879,56 @@
                 };
             }
         EVLayer2.addData(data);
+        EVLayer_pct.addData(data);
+        });
     });
-    });
+
+    ///orig fetch pct
+
+    // fetch('./MASTER_us_states_2.geojson')
+    //     .then((response) => {
+    //         return response.json();
+    //     })
+    //     .then((data) => {
+    //         console.log(data);
+    //         var maxVal = -Infinity, minVal = Infinity;
+    //         var allVals = [];
+    
+    //         data.features.forEach((f, i) => {
+    //             if (f.properties.ap_ratio_1 > 0) {
+    //                 maxVal = Math.max(maxVal, f.properties.change_p_1);
+    //                 minVal = Math.min(minVal, f.properties.change_p_1);
+    //                 allVals.push(f.properties.change_p_1);
+    //             }
+    //         });  
+    //         var valRange = maxVal - minVal;
+    //         var colIntpl = d3.scaleQuantile()
+    //             .domain(allVals)
+    //             .range(d3.schemeBlues[9]);
+    
+    //         function styleColor(change_p_1,count_evs){                
+    //             if (change_p_1<0){
+    //                 return "#f2766f"
+    //             }
+    //             // if (count_evs>999.99){
+    //             return colIntpl(change_p_1)
+    //             // }
+    //         }    
+    //         data.features.forEach((f,i) =>{
+    //             EVLayer_pct.options.style = (f) => {
+    //                 return {
+    //                     fillColor: styleColor(f.properties.change_p_1,f.properties.count_evs),
+    //                     color: "#ffffff",
+    //                     weight: 1,
+    //                     fillOpacity: .8
+    //             };
+    //             }
+    //             EVLayer_pct.addData(data);
+    //     });
+    //     });
+
+
+    //end orig fetchn pct
 
     function onEachFeatureEVs_3(feature, layer) {
             var popupContent = "<p><strong> State: </strong>" + feature.properties.state_1 +
@@ -882,65 +957,6 @@
             };
     
     
-    
-        var EVLayer_pct = L.geoJSON(null, {
-     
-            color: '#ffffff', 
-            onEachFeature: onEachFeatureEVs_3,
-            })
-    
-        
-        $.getJSON("./MASTER_us_states_2.geojson", function (data) {
-    
-            console.log(data);
-            //console.log(data.features.length);
-            
-            EVLayer_pct.addData(data);
-        });
-    
-        fetch('./MASTER_us_states_2.geojson')
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            console.log(data);
-            var maxVal = -Infinity, minVal = Infinity;
-            var allVals = [];
-    
-            data.features.forEach((f, i) => {
-                if (f.properties.ap_ratio_1 > 0) {
-                    maxVal = Math.max(maxVal, f.properties.change_p_1);
-                    minVal = Math.min(minVal, f.properties.change_p_1);
-                    allVals.push(f.properties.change_p_1);
-                }
-            });  
-            var valRange = maxVal - minVal;
-            var colIntpl = d3.scaleQuantile()
-                .domain(allVals)
-                .range(d3.schemeBlues[9]);
-    
-            function styleColor(change_p_1,count_evs){                
-                if (change_p_1<0){
-                    return "#f2766f"
-                }
-                // if (count_evs>999.99){
-                return colIntpl(change_p_1)
-                // }
-            }    
-            data.features.forEach((f,i) =>{
-                EVLayer_pct.options.style = (f) => {
-                    return {
-                        fillColor: styleColor(f.properties.change_p_1,f.properties.count_evs),
-                        color: "#ffffff",
-                        weight: 1,
-                        fillOpacity: .8
-                };
-                }
-                EVLayer_pct.addData(data);
-        });
-        });
-
-
 
     var baseMaps = {
         "Mapbox": baseLayer,
