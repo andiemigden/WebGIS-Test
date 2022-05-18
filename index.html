@@ -343,245 +343,242 @@
 
 <body>
     <main>
-    <section id ="grid">
-
-        <div class="box">
-            <div class = "box-content">
-                <h2>WELCOME TO THE ELECTRIC VEHICLE DASHBOARD</h2>
+        <section id ="grid">
+    
+            <div class="box">
+                <div class = "box-content">
+                    <h2>WELCOME TO THE ELECTRIC VEHICLE DASHBOARD</h2>
+                </div>
             </div>
-        </div>
-
-        <div class="box">
-            <div class = "box-content">
-                <h3>MAP SUMMARY</h3>
-                <br>
-                <br>
-                <h5>Map 1: EVs Per Million Population</h5>
-                <ul>Map 1 is an indication of <b>EV Consumer market maturaty</b> at the state level</ul>
-                <br>
-                <h5>Map 2: Num. Public Charging Outlets Per 100 EVs and % Change in Num. Public Charging Outlets Per 100 EVs</h5>
-                <ul>Map 2 is an indication of <b>EV Supply Equipment (EVSE) infrastructure development</b> and how it's improved or changed over the course of two months at the state level</ul>
-                <br>
-                <h5>Map 3: Local Level EV Statistics and Demographics at the ZIP Code Level</h5>
-                <ul>Map 3 dives into the <b>deployment of EVSE</b> relative to concentrations of different races/ethnicities</ul>
+    
+            <div class="box">
+                <div class = "box-content">
+                    <h3>MAP SUMMARY</h3>
+                    <br>
+                    <br>
+                    <h5>Map 1: EVs Per Million Population</h5>
+                    <ul>Map 1 is an indication of <b>EV Consumer market maturaty</b> at the state level</ul>
+                    <br>
+                    <h5>Map 2: Num. Public Charging Outlets Per 100 EVs and % Change in Num. Public Charging Outlets Per 100 EVs</h5>
+                    <ul>Map 2 is an indication of <b>EV Supply Equipment (EVSE) infrastructure development</b> and how it's improved or changed over the course of two months at the state level</ul>
+                    <br>
+                    <h5>Map 3: Local Level EV Statistics and Demographics at the ZIP Code Level</h5>
+                    <ul>Map 3 dives into the <b>deployment of EVSE</b> relative to concentrations of different races/ethnicities</ul>
+                </div>
             </div>
-        </div>
-
-        <div class="box">                
-            <section id = "grid-for-map">
-                <div class="box-for-map">
-                    <div class = "box-for-map-content">
-                        <div class="btn-group" style ="height: 75%">
-                            <span>
-                                <button type="button" class ="map-button w3-button w3-black"><h6>EVs Per Million Population</h6></button>
+    
+            <div class="box">                
+                <section id = "grid-for-map">
+                    <div class="box-for-map">
+                        <div class = "box-for-map-content">
+                            <div class="btn-group">
+                                <button type="button" class ="map-button w3-button w3-black"><b>EVs Per Million Population</b></button>
                                 <button type="button" class ="map-button-2 w3-button w3-cyan"><b>Number of and % Change in Outlets Per 100 EVs</b></button>
                                 <button type="button" class ="map-button-3 w3-button w3-red"><b>NYC EV Stats</b></button>
-                            </span>
-                        </div>
-                    </div>        
-                </div>
-                <div class="box-for-map">
-                    <div class = "box-for-map-content" id="map">
-                        <div id="map" style="width: 100%; height: 100%; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
-                        leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
-                        <div class = "legend leaflet-control leaflet-bottom leaflet-left">
-                            <h4>NUMBER OF EVS PER MILLION POPULATION</h4>
-                            <i style="background: #fff"></i> <!--  color for <750 (class 1)-->
-                            <span>Less than 750</span>
-                            <br>
-                            <i style="background: #eff"></i> <!--  color for 750 to 999 (class 2) -->
-                            <span>750 to 999</span>
-                            <br>
-                            <i style="background: #cef"></i> <!--  color for 1,000 to 1,099 (class 3) -->
-                            <span>1,000 to 1,099</span>
-                            <br>
-                            <i style="background: #bde"></i> <!--  color for 1,100 to 1,299 (class 4) -->
-                            <span>1,100 to 1,299</span>
-                            <br>
-                            <i style="background: #7bd"></i> <!--  color for 1,300 to 1,799 (class 5) -->
-                            <span>1,300 to 1,799</span>
-                            <br>
-                            <i style="background: #49c"></i> <!--  color for 1,800 to 2,199 (class 6) -->
-                            <span>1,800 to 2,199</span>
-                            <br>
-                            <i style="background: #27d"></i> <!--  color for 2,200 to 3,199 (class 7) -->
-                            <span>2,200 to 3,199</span>
-                            <br>
-                            <i style="background: #15a"></i> <!--  color for 3,200 to 3,899 (class 8) -->
-                            <span>3,200 to 3,899</span>
-                            <br>
-                            <i style="background: #137"></i> <!--  color for 3,900 to 10,839 (class 9) -->
-                            <span>3,900 to 10,839</span>
-                        </div>
-                        </div> 
+                            </div>
+                        </div>        
                     </div>
-                </div>
-                <!--this is the SECOND DIV that will be hidden unless button is clicked-->
-                <div class="box-for-map">
-                    <div class = "box-for-map-content" id="map_2"> 
-                        <div id="map_2" style="width: 100%; height: 100%; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
-                        leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
-                        <div class = "legend leaflet-control leaflet-bottom leaflet-left">
-                            <h4>NUMBER OF CHARGING OUTLETS PER 100 EVS</h4>
-                            <i style="background: #ccc"></i> <!--  color for <750 (class 1)-->
-                            <span>N/A: Less than 1,000 Total Registered EVs</span>
-                            <br>
-                            <i style="background: #fff"></i> <!--  color for less than 10 outlets(class 1)-->
-                            <span>Less than 10</span>
-                            <br>
-                            <i style="background: #eff"></i> <!--  color for 750 to 999 (class 2) -->
-                            <span>10 to 12.99</span>
-                            <br>
-                            <i style="background: #cef"></i> <!--  color for 1,000 to 1,099 (class 3) -->
-                            <span>13 to 14.99</span>
-                            <br>
-                            <i style="background: #bde"></i> <!--  color for 1,100 to 1,299 (class 4) -->
-                            <span>15 to 15.99</span>
-                            <br>
-                            <i style="background: #7bd"></i> <!--  color for 1,300 to 1,799 (class 5) -->
-                            <span>16 to 17.79</span>
-                            <br>
-                            <i style="background: #49c"></i> <!--  color for 1,800 to 2,199 (class 6) -->
-                            <span>17.9 to 20.99</span>
-                            <br>
-                            <i style="background: #27d"></i> <!--  color for 2,200 to 3,199 (class 7) -->
-                            <span>21 to 29.99</span>
-                            <br>
-                            <i style="background: #15a"></i> <!--  color for 3,200 to 3,899 (class 8) -->
-                            <span>30.0 to 37.99</span>
-                            <br>
-                            <i style="background: #137"></i> <!--  color for 3,900 to 10,839 (class 9) -->
-                            <span>38 to 40</span>
+                    <div class="box-for-map">
+                        <div class = "box-for-map-content" id="map">
+                            <div id="map" style="width: 100%; height: 100%; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
+                            leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
+                            <div class = "legend leaflet-control leaflet-bottom leaflet-left">
+                                <h4>NUMBER OF EVS PER MILLION POPULATION</h4>
+                                <i style="background: #fff"></i> <!--  color for <750 (class 1)-->
+                                <span>Less than 750</span>
+                                <br>
+                                <i style="background: #eff"></i> <!--  color for 750 to 999 (class 2) -->
+                                <span>750 to 999</span>
+                                <br>
+                                <i style="background: #cef"></i> <!--  color for 1,000 to 1,099 (class 3) -->
+                                <span>1,000 to 1,099</span>
+                                <br>
+                                <i style="background: #bde"></i> <!--  color for 1,100 to 1,299 (class 4) -->
+                                <span>1,100 to 1,299</span>
+                                <br>
+                                <i style="background: #7bd"></i> <!--  color for 1,300 to 1,799 (class 5) -->
+                                <span>1,300 to 1,799</span>
+                                <br>
+                                <i style="background: #49c"></i> <!--  color for 1,800 to 2,199 (class 6) -->
+                                <span>1,800 to 2,199</span>
+                                <br>
+                                <i style="background: #27d"></i> <!--  color for 2,200 to 3,199 (class 7) -->
+                                <span>2,200 to 3,199</span>
+                                <br>
+                                <i style="background: #15a"></i> <!--  color for 3,200 to 3,899 (class 8) -->
+                                <span>3,200 to 3,899</span>
+                                <br>
+                                <i style="background: #137"></i> <!--  color for 3,900 to 10,839 (class 9) -->
+                                <span>3,900 to 10,839</span>
+                            </div>
+                            </div> 
                         </div>
-                        <!-- <div class = "legend leaflet-control leaflet-bottom leaflet-right">
-                            <h4>% CHANGE IN NUM CHARING OUTLETS PER 100 EVS</h4>
-                            <i style="background: #f77"></i> 
-                            <span>DECREASE in Num Charging Outlets Per 100 EVs</span> 
-                            <br>
-                            <i style="background: #eff"></i> 
-                            <span>0.0% to 0.69%</span>
-                            <br>
-                            <i style="background: #cef"></i> 
-                            <span>0.70% to 1.02%</span>
-                            <br>
-                            <i style="background: #ade"></i> 
-                            <span>1.03% to 1.99%</span>
-                            <br>
-                            <i style="background: #7bd"></i>
-                            <span>2.0% to 2.79%</span>
-                            <br>
-                            <i style="background: #49c"></i> 
-                            <span>2.8% to 3.99%</span>
-                            <br>
-                            <i style="background: #27b"></i> 
-                            <span>4.0% to 4.99%</span>
-                            <br>
-                            <i style="background: #15a"></i> 
-                            <span>5.0% to 7.99%</span>
-                            <br>
-                            <i style="background: #137"></i>
-                            <span>8.0% to 13.0%</span>
-                        </div> -->
-                        </div> 
                     </div>
-                </div>
-                <!--this is the THIRD DIV that will be hidden unless button is clicked-->
-                <div class="box-for-map">
-                    <div class = "box-for-map-content" id="map_3"> 
-                        <div id="map_3" style="width: 100%; height: 100%; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
-                        leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
-                        <div class = "legend leaflet-control leaflet-bottom leaflet-left">
-                            <h4>ZIP CODE BLUE AND GREEN OUTLINES</h4>
-                            <i style="background: #194D33"></i> 
-                            <span>IF NO L2 OR DCFC OUTLETS AVAIL</span>
-                            <br>
-                            <i style="background: #0B29FB"></i>
-                            <span>IF FIVE OR LESS L2 OR DCFC OUTLETS AVAIL</span>
-                            <br>
+                    <!--this is the SECOND DIV that will be hidden unless button is clicked-->
+                    <div class="box-for-map">
+                        <div class = "box-for-map-content" id="map_2"> 
+                            <div id="map_2" style="width: 100%; height: 750px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
+                            leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
+                            <div class = "legend leaflet-control leaflet-bottom leaflet-left">
+                                <h4>NUMBER OF CHARGING OUTLETS PER 100 EVS</h4>
+                                <i style="background: #ccc"></i> <!--  color for <750 (class 1)-->
+                                <span>N/A: Less than 1,000 Total Registered EVs</span>
+                                <br>
+                                <i style="background: #fff"></i> <!--  color for less than 10 outlets(class 1)-->
+                                <span>Less than 10</span>
+                                <br>
+                                <i style="background: #eff"></i> <!--  color for 750 to 999 (class 2) -->
+                                <span>10 to 12.99</span>
+                                <br>
+                                <i style="background: #cef"></i> <!--  color for 1,000 to 1,099 (class 3) -->
+                                <span>13 to 14.99</span>
+                                <br>
+                                <i style="background: #bde"></i> <!--  color for 1,100 to 1,299 (class 4) -->
+                                <span>15 to 15.99</span>
+                                <br>
+                                <i style="background: #7bd"></i> <!--  color for 1,300 to 1,799 (class 5) -->
+                                <span>16 to 17.79</span>
+                                <br>
+                                <i style="background: #49c"></i> <!--  color for 1,800 to 2,199 (class 6) -->
+                                <span>17.9 to 20.99</span>
+                                <br>
+                                <i style="background: #27d"></i> <!--  color for 2,200 to 3,199 (class 7) -->
+                                <span>21 to 29.99</span>
+                                <br>
+                                <i style="background: #15a"></i> <!--  color for 3,200 to 3,899 (class 8) -->
+                                <span>30.0 to 37.99</span>
+                                <br>
+                                <i style="background: #137"></i> <!--  color for 3,900 to 10,839 (class 9) -->
+                                <span>38 to 40</span>
+                            </div>
+                            <div class = "legend leaflet-control leaflet-bottom leaflet-right">
+                                <h4>% CHANGE IN NUM CHARING OUTLETS PER 100 EVS</h4>
+                                <i style="background: #f77"></i> 
+                                <span>DECREASE in Num Charging Outlets Per 100 EVs</span> 
+                                <br>
+                                <i style="background: #eff"></i> 
+                                <span>0.0% to 0.69%</span>
+                                <br>
+                                <i style="background: #cef"></i> 
+                                <span>0.70% to 1.02%</span>
+                                <br>
+                                <i style="background: #ade"></i> 
+                                <span>1.03% to 1.99%</span>
+                                <br>
+                                <i style="background: #7bd"></i>
+                                <span>2.0% to 2.79%</span>
+                                <br>
+                                <i style="background: #49c"></i> 
+                                <span>2.8% to 3.99%</span>
+                                <br>
+                                <i style="background: #27b"></i> 
+                                <span>4.0% to 4.99%</span>
+                                <br>
+                                <i style="background: #15a"></i> 
+                                <span>5.0% to 7.99%</span>
+                                <br>
+                                <i style="background: #137"></i>
+                                <span>8.0% to 13.0%</span>
+                            </div>
+                            </div> 
                         </div>
-                        </div> 
                     </div>
-                </div>                                                                   
-            </section>        
-        </div>
-        </div>    
-        <div class="box">
-            <div class = "box-content">
-                <table class ='w3-table w3-round-large w3-border'>
-                    <thead>
-                        <tr class="w3-teal">
-                            <strong>STATE LEVEL DATA</strong>
-                        </br>
-                            <select id ="state_1" onchange="changeState()">
-                                <option value>Select a State</option>
-                                <option value "AL">Alabama</option> <!--1-->
-                                <option value "AL">Alaska</option> <!--2-->
-                                <option value "AZ">Arizona</option><!--3-->
-                                <option value "AR">Arkansas</option>  <!--4-->
-                                <option value "CA">California</option>  <!--5-->
-                                <option value "CO">Colorado</option>  <!--6-->
-                                <option value "CT">Connecticut</option>  <!--7-->
-                                <option value "DE">Delaware</option>  <!--8-->
-                                <option value "DC">District of Columbia</option>  <!--9-->
-                                <option value "FL">Florida</option>  <!--10-->
-                                <option value "GA">Georgia</option>  <!--11-->
-                                <option value "HI">Hawaii</option>  <!--12-->
-                                <option value "ID">Idaho</option>  <!--13-->
-                                <option value "IL">Illinois</option>  <!--14-->
-                                <option value "IN">Indiana</option>  <!--15-->
-                                <option value "IA">Iowa</option>  <!--16-->
-                                <option value "KS">Kansas</option>  <!--17-->
-                                <option value "KY">Kentucky</option> <!--18-->
-                                <option value "LA">Louisiana</option>  <!--19-->
-                                <option value "ME">Maine</option>  <!--20-->
-                                <option value "MD">Maryland</option>  <!--21-->
-                                <option value "MA">Massachussets</option>  <!--22-->
-                                <option value "MI">Michigan</option>  <!--23-->
-                                <option value "MN">Minnesota</option> <!--24-->
-                                <option value "MS">Mississippi</option> <!--25--> 
-                                <option value "MO">Missouri</option> <!--26-->
-                                <option value "MT">Montana</option> <!--27-->
-                                <option value "NE">Nebraska</option> <!--28-->
-                                <option value "NV">Nevada</option> <!--29-->
-                                <option value "NH">New Hampshire</option> <!--30-->
-                                <option value "NJ">New Jersey</option> <!--31-->
-                                <option value "NM">New Mexico</option> <!--32-->
-                                <option value "NY">New York</option> <!--33-->
-                                <option value "NC">North Carolina</option> <!--34-->
-                                <option value "ND">North Dakota</option> <!--35-->
-                                <option value "OH">Ohio</option> <!--36-->
-                                <option value "OK">Oklahoma</option> <!--37-->
-                                <option value "OR">Oregon</option> <!--38-->
-                                <option value "PA">Pennsylvania</option> <!--39-->
-                                <option value "PR">Puerto Rico</option> <!--40-->
-                                <option value "RI">Rhode Island</option> <!--41-->
-                                <option value "SC">South Carolina</option> <!--42-->
-                                <option value "SD">South Dakota</option> <!--43-->
-                                <option value "TN">Tennessee</option> <!--44-->
-                                <option value "TX">Texas</option> <!--45-->
-                                <option value "UT">Utah</option> <!--46-->
-                                <option value "VT">Vermont</option> <!--47-->
-                                <option value "VA">Virginia</option> <!--48-->
-                                <option value "WA">Washington</option> <!--49-->
-                                <option value "WV">West Virginia</option> <!--50-->
-                                <option value "WI">Wisconsin</option> <!--51-->
-                                <option value "WY">Wyoming</option> <!--52-->
-
-                            </select>         
-                        </tr>
-                    </thead>
-                </table>
+                    <!--this is the THIRD DIV that will be hidden unless button is clicked-->
+                    <div class="box-for-map">
+                        <div class = "box-for-map-content" id="map_3"> 
+                            <div id="map_3" style="width: 100%; height: 750px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
+                            leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
+                            <div class = "legend leaflet-control leaflet-bottom leaflet-left">
+                                <h4>ZIP CODE BLUE AND GREEN OUTLINES</h4>
+                                <i style="background: #194D33"></i> 
+                                <span>IF NO L2 OR DCFC OUTLETS AVAIL</span>
+                                <br>
+                                <i style="background: #0B29FB"></i>
+                                <span>IF FIVE OR LESS L2 OR DCFC OUTLETS AVAIL</span>
+                                <br>
+                            </div>
+                            </div> 
+                        </div>
+                    </div>                                                                   
+                </section>        
             </div>
-        </div>      
-        <div class="box">
-            <div class = "box-content">
-                <h5>EV STATISTICS AND DEMOGRAPHIC DATA BY STATE, COUNTY, AND ZIP COMING SOON</h5>
-            </div> 
-        </div>
-
-    </section>
-    </main>
-
+            </div>    
+            <div class="box">
+                <div class = "box-content">
+                    <table class ='w3-table w3-round-large w3-border'>
+                        <thead>
+                            <tr class="w3-teal">
+                                <strong>STATE LEVEL DATA</strong>
+                            </br>
+                                <select id ="state_1" onchange="changeState()">
+                                    <option value>Select a State</option>
+                                    <option value "AL">Alabama</option> <!--1-->
+                                    <option value "AL">Alaska</option> <!--2-->
+                                    <option value "AZ">Arizona</option><!--3-->
+                                    <option value "AR">Arkansas</option>  <!--4-->
+                                    <option value "CA">California</option>  <!--5-->
+                                    <option value "CO">Colorado</option>  <!--6-->
+                                    <option value "CT">Connecticut</option>  <!--7-->
+                                    <option value "DE">Delaware</option>  <!--8-->
+                                    <option value "DC">District of Columbia</option>  <!--9-->
+                                    <option value "FL">Florida</option>  <!--10-->
+                                    <option value "GA">Georgia</option>  <!--11-->
+                                    <option value "HI">Hawaii</option>  <!--12-->
+                                    <option value "ID">Idaho</option>  <!--13-->
+                                    <option value "IL">Illinois</option>  <!--14-->
+                                    <option value "IN">Indiana</option>  <!--15-->
+                                    <option value "IA">Iowa</option>  <!--16-->
+                                    <option value "KS">Kansas</option>  <!--17-->
+                                    <option value "KY">Kentucky</option> <!--18-->
+                                    <option value "LA">Louisiana</option>  <!--19-->
+                                    <option value "ME">Maine</option>  <!--20-->
+                                    <option value "MD">Maryland</option>  <!--21-->
+                                    <option value "MA">Massachussets</option>  <!--22-->
+                                    <option value "MI">Michigan</option>  <!--23-->
+                                    <option value "MN">Minnesota</option> <!--24-->
+                                    <option value "MS">Mississippi</option> <!--25--> 
+                                    <option value "MO">Missouri</option> <!--26-->
+                                    <option value "MT">Montana</option> <!--27-->
+                                    <option value "NE">Nebraska</option> <!--28-->
+                                    <option value "NV">Nevada</option> <!--29-->
+                                    <option value "NH">New Hampshire</option> <!--30-->
+                                    <option value "NJ">New Jersey</option> <!--31-->
+                                    <option value "NM">New Mexico</option> <!--32-->
+                                    <option value "NY">New York</option> <!--33-->
+                                    <option value "NC">North Carolina</option> <!--34-->
+                                    <option value "ND">North Dakota</option> <!--35-->
+                                    <option value "OH">Ohio</option> <!--36-->
+                                    <option value "OK">Oklahoma</option> <!--37-->
+                                    <option value "OR">Oregon</option> <!--38-->
+                                    <option value "PA">Pennsylvania</option> <!--39-->
+                                    <option value "PR">Puerto Rico</option> <!--40-->
+                                    <option value "RI">Rhode Island</option> <!--41-->
+                                    <option value "SC">South Carolina</option> <!--42-->
+                                    <option value "SD">South Dakota</option> <!--43-->
+                                    <option value "TN">Tennessee</option> <!--44-->
+                                    <option value "TX">Texas</option> <!--45-->
+                                    <option value "UT">Utah</option> <!--46-->
+                                    <option value "VT">Vermont</option> <!--47-->
+                                    <option value "VA">Virginia</option> <!--48-->
+                                    <option value "WA">Washington</option> <!--49-->
+                                    <option value "WV">West Virginia</option> <!--50-->
+                                    <option value "WI">Wisconsin</option> <!--51-->
+                                    <option value "WY">Wyoming</option> <!--52-->
+    
+                                </select>         
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>      
+            <div class="box">
+                <div class = "box-content">
+                    <h5>EV STATISTICS AND DEMOGRAPHIC DATA BY STATE, COUNTY, AND ZIP COMING SOON</h5>
+                </div> 
+            </div>
+    
+        </section>
+        </main>
     <!-- SCRIPT FOR THE FIRST MAP -->
 
     <script>
