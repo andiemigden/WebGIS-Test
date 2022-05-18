@@ -133,13 +133,13 @@
         }
 
         #grid .box:not(:first-of-type):not(:last-of-type) {
-            height: 80%; /*targets the middle three becuase it's targeting NOT the first one and NOT the last one*/
+            height: 80vh; /*targets the middle three becuase it's targeting NOT the first one and NOT the last one*/
             flex-grow: 1; /*flex grow of 1 helps it stay responsive*/
         }
 
 
         #grid .box:first-of-type, #grid .box:last-of-type {
-            height: 10%; /*takes percentage of the screen width and not the parent DIV*/ 
+            height: 10vh; /*takes percentage of the screen width and not the parent DIV*/ 
             /*you don't have to take the width of the DIV*/
             flex-grow: 1; /*flex grow of 1 helps it stay responsive*/
         }
@@ -152,7 +152,7 @@
 
         #grid .box:nth-of-type(2) {
             background: #0085ca;
-            flex-basis: 10%; /*how much width it takes up within the parent. Every child added together has to equal to 100%*/
+            flex-basis: 10vh; /*how much width it takes up within the parent. Every child added together has to equal to 100%*/
             flex-grow: 1;
         }
 
@@ -165,7 +165,7 @@
             align-items: top;
             justify-content: top;
             background: #0085ca;
-            flex-basis: 10%;
+            flex-basis: 10vh;
         } 
 
         #grid .box:nth-of-type(5) {
