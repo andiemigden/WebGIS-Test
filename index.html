@@ -14,8 +14,8 @@
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
      crossorigin=""/>
-     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+     <!--<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />-->
      
      <!--LEAFLET.JS-->
      <script
@@ -633,52 +633,52 @@
         }).addTo(map);
 
     
-    $.getJSON("./MASTER_us_states.geojson", function (data) {
-
-        console.log(data);
-        //console.log(data.features.length);
-        
-        EVLayer.addData(data);
-    });
-
-    // fetch('./MASTER_us_states.geojson')
-    // .then((response) => {
-    //     return response.json();
-    // })
-    // .then((data) => {
-
+    // $.getJSON("./MASTER_us_states.geojson", function (data) {
 
     //     console.log(data);
-    //     var maxVal = -Infinity, minVal = Infinity;
-    //     var allVals = [];
-
-    //     data.features.forEach((f, i) => {
-    //         if (f.properties.count_evs > 500) {
-    //             maxVal = Math.max(maxVal, f.properties.evs_per_mi);
-    //             minVal = Math.min(minVal, f.properties.evs_per_mi);
-    //             allVals.push(f.properties.evs_per_mi);
-    //         }
-    //     });  
-    //     var valRange = maxVal - minVal;
-    //     var colIntpl = d3.scaleQuantile()
-    //         .domain(allVals)
-    //         .range(d3.schemeBlues[9]);
-
-    //     EVLayer.options.style = (f) => {
-    //         return {
-    //             fillColor: colIntpl(f.properties.evs_per_mi),
-    //             color: "#ffffff",
-    //             weight: 1,
-    //             fillOpacity: 1
-    //         }
-    //     };       
-    //     EVLayer.myExtraData = [maxVal, minVal, valRange,
-    //         d3.scalePow()
-    //             .exponent(0.5)
-    //             .domain([0, maxVal])
-    //             .range([0, 20])];
+    //     //console.log(data.features.length);
+        
     //     EVLayer.addData(data);
     // });
+
+    fetch('./MASTER_us_states.geojson')
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+
+
+        console.log(data);
+        var maxVal = -Infinity, minVal = Infinity;
+        var allVals = [];
+
+        data.features.forEach((f, i) => {
+            if (f.properties.count_evs > 500) {
+                maxVal = Math.max(maxVal, f.properties.evs_per_mi);
+                minVal = Math.min(minVal, f.properties.evs_per_mi);
+                allVals.push(f.properties.evs_per_mi);
+            }
+        });  
+        var valRange = maxVal - minVal;
+        var colIntpl = d3.scaleQuantile()
+            .domain(allVals)
+            .range(d3.schemeBlues[9]);
+
+        EVLayer.options.style = (f) => {
+            return {
+                fillColor: colIntpl(f.properties.evs_per_mi),
+                color: "#ffffff",
+                weight: 1,
+                fillOpacity: 1
+            }
+        };       
+        EVLayer.myExtraData = [maxVal, minVal, valRange,
+            d3.scalePow()
+                .exponent(0.5)
+                .domain([0, maxVal])
+                .range([0, 20])];
+        EVLayer.addData(data);
+    });
 
    
     //SCRIPT FOR DROP DOWN
