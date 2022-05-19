@@ -172,7 +172,7 @@
 
         #grid-for-map .box-for-map { /*the .box-for-map is the children DIVs*/
             display: flex;
-            flex-basis: 100%; /*this goes off the parent grid adnd the child will have a flex basis */
+            flex-basis: 60%; /*this goes off the parent grid adnd the child will have a flex basis */
             justify-content: center;
             align-items: center;
             color: #171717;
@@ -1764,6 +1764,8 @@
                 "Mapbox": baseLayer,
                 "OSM": baseLayer_osm
             };
+
+            var zip_LayerGroup1 = L.layerGroup([ZIPs_NYC_outlets, ZIPs_NYC_pop_den]);
         
            var overlayMaps = {
             "Num. EV Charging Outlets by ZIP": ZIPs_NYC_outlets,
@@ -1776,7 +1778,7 @@
            "EV Stations (Updated Apr 2022) by Type": stationsApr_type,
            }
         
-           var lC = L.control.layers(baseMaps, overlayMaps, {collapsed: true, hideSingleBase: true },).addTo(map_3);//.expand();
+           var lC = L.control.layers(baseMaps, overlayMaps, zipLayerGroup1, {collapsed: true, hideSingleBase: true },).addTo(map_3);//.expand();
         
             var lcDIVElem = lC.getContainer();
             document.addEventListener("keydown", (e) => {
