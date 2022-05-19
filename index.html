@@ -616,13 +616,19 @@
             mouseout: (e) => {
                 EVLayer.resetStyle(e.target),
                 EVLayer.closeTooltip(),
-                EVLayer.closePopup()},
+                EVLayer.closePopup(),
+                EVLayer2.resetStyle(e.target),
+                EVLayer2.closeTooltip(),
+                EVLayer2.closePopup(),
+                EVLayer_pct.resetStyle(e.target),
+                EVLayer_pct.closeTooltip(),
+                EVLayer_pct.closePopup()},
             click: (e) => {
-                EVLayer.closeTooltip()}
+                EVLayer.closeTooltip(),
+                EVLayer2.closeTooltip(),
+                EVLayer_pct.closeTooltip()}
         });             
-        };
-
-
+    };
 
     var EVLayer = L.geoJSON(null, {
  
@@ -670,7 +676,98 @@
         EVLayer.addData(data);
     });
 
-   
+    var EVLayer2 = L.geoJSON(null, {
+ 
+        color: '#ffffff', 
+        onEachFeature: onEachFeatureEVs,
+        }).addTo(map_2);
+
+        
+    var EVLayer_pct = L.geoJSON(null, {
+        
+        color: '#ffffff', 
+        onEachFeature: onEachFeatureEVs,
+     });
+
+    fetch('./MASTER_us_states.geojson')
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        console.log(data);
+        var maxVal = -Infinity, minVal = Infinity;
+        var allVals = [];
+        var allVals_pct =[];
+
+        var maxVal_pct = -Infinity, minVal_pct = Infinity;
+
+        data.features.forEach((f, i) => {
+            if (f.properties.ap_ratio_1 > 0) {
+                maxVal = Math.max(maxVal, f.properties.ap_ratio_1);
+                minVal = Math.min(minVal, f.properties.ap_ratio_1);
+                
+
+                maxVal_pct = Math.max(maxVal_pct, f.properties.change_p_1);
+                minVal_pct = Math.min(minVal_pct, f.properties.change_p_1);
+                allVals_pct.push(f.properties.change_p_1);
+                allVals.push(f.properties.ap_ratio_1);
+            }
+        });  
+        var valRange = maxVal - minVal;
+        var valRange_pct = maxVal_pct - minVal_pct;
+
+        var colIntpl = d3.scaleQuantile()
+            .domain(allVals)
+            .range(d3.schemeBlues[9]);
+
+        var colIntpl_pct = d3.scaleQuantile()
+            .domain(allVals_pct)
+            .range(d3.schemeBlues[9]);
+
+        function styleColor(outlets_per_100evs,count_evs){
+            if (count_evs<1000){
+                return "#babab8"
+            }
+            if (count_evs>999.99){
+                return colIntpl(outlets_per_100evs)
+            }
+        }
+
+        function styleColor_pct(change_p_1){                
+                if (change_p_1<0){
+                    return "#f2766f"
+                }
+                // if (count_evs>999.99){
+                return colIntpl_pct(change_p_1)
+                // }
+            }
+        
+        data.features.forEach((f,i) =>{
+            EVLayer_pct.options.style = (f) => {
+                    return {
+                        fillColor: styleColor_pct(f.properties.change_p_1),
+                        color: "#ffffff",
+                        weight: 1,
+                        fillOpacity: .8
+                    }
+                ;
+            }
+            if (f.properties.count_evs > 1000) {
+                EVLayer2.options.style = (f) => {
+                    return {
+                        fillColor: styleColor(f.properties.ap_ratio_1,f.properties.count_evs),
+                        color: "#ffffff",
+                        weight: 1,
+                        fillOpacity: .8
+                    }
+                };
+            }
+        EVLayer2.addData(data);
+        EVLayer_pct.addData(data);
+        });
+    });
+
+
     //SCRIPT FOR DROP DOWN
     changeState = () => {
         var curState = document.getElementById("state_1");
@@ -691,7 +788,9 @@
     };
 
     var overlayMaps = {
-        "EV Stats by State": EVLayer,
+        "EVs Per Million Population": EVLayer,
+        "Number of Outlets Per 100 EVs": EVLayer2,
+        "% Change in NUmber of Outlets Per 100 EVs (Feb to April 2022)": EVLayer_pct
     };
 
     var lC = L.control.layers(baseMaps, overlayMaps, {collapsed: true, hideSingleBase: true },).addTo(map);//.expand();
