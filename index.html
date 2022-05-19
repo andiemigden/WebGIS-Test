@@ -654,7 +654,7 @@
 
         console.log(data);
         var maxVal = -Infinity, minVal = Infinity;
-        var maxval_pct = -150000, minVal_pct = Infinity;
+        var maxVal_pct = -150000, minVal_pct = Infinity;
         var maxVal_outlet = -Infinity, minVal_outlet = Infinity;
 
         var allVals = [];
@@ -667,15 +667,15 @@
                 minVal = Math.min(minVal, f.properties.evs_per_mi);
                 allVals.push(f.properties.evs_per_mi);
             }
-            // if (f.properties.ap_ratio_1 > 0) {
-            //     maxVal_outlet = Math.max(maxVal_outlet, f.properties.ap_ratio_1);
-            //     minVal_outlet = Math.min(minVal_outlet, f.properties.ap_ratio_1);
+            if (f.properties.ap_ratio_1 > 0) {
+                maxVal_outlet = Math.max(maxVal_outlet, f.properties.ap_ratio_1);
+                minVal_outlet = Math.min(minVal_outlet, f.properties.ap_ratio_1);
                 
-            //     maxVal_pct = Math.max(maxVal_pct, f.properties.change_p_1);
-            //     minVal_pct = Math.min(minVal_pct, f.properties.change_p_1);
-            //     allVals_pct.push(f.properties.change_p_1);
-            //     allVals_outlet.push(f.properties.ap_ratio_1);
-            // }
+                maxVal_pct = Math.max(maxVal_pct, f.properties.change_p_1);
+                minVal_pct = Math.min(minVal_pct, f.properties.change_p_1);
+                allVals_pct.push(f.properties.change_p_1);
+                allVals_outlet.push(f.properties.ap_ratio_1);
+            }
         });  
         var valRange = maxVal - minVal;
         var valRange_outlet = maxVal_outlet - minVal_outlet;
