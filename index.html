@@ -1406,13 +1406,13 @@
             
 
             //ZIPS OUTLET LAYER
-            $.getJSON("./zips_select_NYC_CLEAN2.geojson", function (data) {
+            // $.getJSON("./zips_select_NYC_CLEAN2.geojson", function (data) {
         
-                console.log(data);
-                //console.log(data.features.length);
+            //     console.log(data);
+            //     //console.log(data.features.length);
                 
-                ZIPs_NYC_outlets.addData(data);
-            });
+            //     ZIPs_NYC_outlets.addData(data);
+            // });
 
             fetch('./zips_select_NYC_CLEAN2.geojson')
             .then((response) => {
@@ -1455,9 +1455,10 @@
 
                 //valRange Pop Density and colIntpl for Pop Density
                 var valRange_pop_dens = maxVal_pop_dens - minVal_pop_dens;
+
                 var colIntpl_pop_dens = d3.scaleQuantile()
                     .domain(allVals_pop_dens)
-                    .range(d3.schemePurples)[7];
+                    .range(d3.schemePurples[7]);
 
                 //style function Pop Density
                 function styleOutline(num_l2_dcf){
