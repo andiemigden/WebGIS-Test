@@ -1125,8 +1125,8 @@
                             e.target.setStyle({ radius: 17, color: "#9b090b",weight: 3});
                             e.target.openPopup()},
                         mouseout: (e) => {
-                            stationsApr_outlets.resetStyle(e.target),
-                            stationsApr_outlets.closePopup(e.target)},
+                            stationsApr_type.resetStyle(e.target),
+                            stationsApr_type.closePopup(e.target)},
                     });
             };
 
@@ -1797,19 +1797,19 @@
             });
             //END ZIPS PCT WHITE LAYER
 
-            var stationsApr_outlets = L.geoJson(null, {
-                pointToLayer: function (feature, latlng) {
-                    //let val = getColor_stations_outlets("");
-                    return L.circleMarker(latlng, {
-                        fillColor: getColor_stations_outlets(feature.properties.all_l2_dcf),
-                        fillOpacity: 1,
-                        weight: getWeight_stations_outlets(feature.properties.num_dcfc),
-                        radius: getRadius_stations_outlets(feature.properties.all_l2_dcf),
-                        color: getStroke_stations_outlets(feature.properties.num_dcfc)
-                    });
-                },
-                onEachFeature: onEachFeatureStations
-            });
+            // var stationsApr_outlets = L.geoJson(null, {
+            //     pointToLayer: function (feature, latlng) {
+            //         //let val = getColor_stations_outlets("");
+            //         return L.circleMarker(latlng, {
+            //             fillColor: getColor_stations_outlets(feature.properties.all_l2_dcf),
+            //             fillOpacity: 1,
+            //             weight: getWeight_stations_outlets(feature.properties.num_dcfc),
+            //             radius: getRadius_stations_outlets(feature.properties.all_l2_dcf),
+            //             color: getStroke_stations_outlets(feature.properties.num_dcfc)
+            //         });
+            //     },
+            //     onEachFeature: onEachFeatureStations
+            // });
 
             //add data for both stations type and stations outlet
             $.getJSON("./afdc_data_nyc_04_23_2022.geojson", function (data) {
