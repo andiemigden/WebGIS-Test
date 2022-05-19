@@ -1405,15 +1405,6 @@
             })
             
 
-            //ZIPS OUTLET LAYER
-            // $.getJSON("./zips_select_NYC_CLEAN2.geojson", function (data) {
-        
-            //     console.log(data);
-            //     //console.log(data.features.length);
-                
-            //     ZIPs_NYC_outlets.addData(data);
-            // });
-
             fetch('./zips_select_NYC_CLEAN2.geojson')
             .then((response) => {
                 return response.json();
@@ -1503,60 +1494,6 @@
                 ZIPs_NYC_outlets.addData(data);
                 ZIPs_NYC_pop_den.addData(data);
             });
-            //END ZIPS OUTLET LAYER
-
-            //ZIPS POP DENSITY LAYER    
-
-            // fetch('./zips_select_NYC_CLEAN2.geojson')
-            // .then((response) => {
-            // return response.json();
-            // })
-            // .then((data) => {
-            //     console.log(data);
-            //     var maxVal = -Infinity, minVal = Infinity;
-            //     var allVals = [];
-
-            //     data.features.forEach((f, i) => {
-            //         maxVal = Math.max(maxVal, f.properties.Dens_Tot_P);
-            //         minVal = Math.min(minVal, f.properties.Dens_Tot_P);
-            //         allVals.push(f.properties.Dens_Tot_P);
-            //     });  
-            //     var valRange = maxVal - minVal;
-            //     var colIntpl = d3.scaleQuantile()
-            //         .domain(allVals)
-            //         .range(d3.schemePurples[7]);
-
-            //     function styleOutline(num_l2_dcf){
-            //         if (num_l2_dcf==0){
-            //             return "#194D33"
-            //         }
-            //         if (num_l2_dcf <6){
-            //             return "#0B29FB"
-            //         }
-            //         return "#ffffff"
-            //     }
-
-            //     function styleWeight(num_l2_dcf){
-            //         if (num_l2_dcf<6){
-            //             return 2.5
-            //         }
-            //         return 1
-            //     }
-
-            //     data.features.forEach((f,i) =>{
-            //         ZIPs_NYC_pop_den.options.style = (f) => {
-            //             return {
-            //                 fillColor: colIntpl(f.properties.Dens_Tot_P),
-            //                 color: styleOutline(f.properties.num_l2_dcf),
-            //                 weight: styleWeight(f.properties.num_l2_dcf),
-            //                 fillOpacity: .9
-            //         };
-            //         }
-            //         ZIPs_NYC_pop_den.addData(data);
-            //     });
-            // });
-            
-            //END ZIPS POP DENSITY LAYER
 
             //ZIPS PCT ASIAN LAYER    
             $.getJSON("./zips_select_NYC_CLEAN2.geojson", function (data) {
@@ -1923,7 +1860,7 @@
                     legend_outlets_size.addTo(map_3);
                     legend_oultets_color.addTo(map_3);
                 }
-                else if  (eventLayer.name === 'Pop Density (Pop/Sq Mi) by ZIP') {
+                else if  (eventLayer.name === ZIPs_NYC_pop_den) {
                     ZIPs_NYC_outlets.bringToFront();
                     map_3.removeControl(currentLegend);
                     currentLegend = legend_pop_den;
