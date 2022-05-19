@@ -14,8 +14,8 @@
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
      crossorigin=""/>
-     <!--<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />-->
+     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
      
      <!--LEAFLET.JS-->
      <script
@@ -60,6 +60,7 @@
         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
         crossorigin=""
      />
+
      <!--STYLE-->
      <style>
         body {
@@ -150,7 +151,7 @@
         }
 
         #grid .box:nth-of-type(2) {
-            background: #0085ca;
+            background: #f3f3f3;
             flex-basis: 10%; /*how much width it takes up within the parent. Every child added together has to equal to 100%*/
             flex-grow: 1;
         }
@@ -178,13 +179,12 @@
             justify-content: center;
             align-items: center;
             color: #171717;
-            height: 95%;
         }
 
         #grid-for-map .box-for-map:nth-of-type(1) {
             justify-content: space-around;
             flex-basis: 100%;
-            height: 5%;
+            height: 5vh;
         }
 
         #grid-for-map .box-for-map:nth-of-type(2) {
@@ -273,23 +273,6 @@
 
         .leaflet-tooltip {font-size: 10px;}
 
-        ul {
-            font-size: 15px;
-            color: #ffffff;
-        }
-
-        h5 {
-            font-size: 20px;
-        }
-
-        h3 {
-            font-size: 25px;
-        }
-
-        h3 {
-            color: #ffffff;
-        }
-
         /* hellow */
 
         #flex {
@@ -314,8 +297,8 @@
   
      </style>
 
-<title>EV Dashboard</title>
-<meta name="description" content="An interactive way to explore the EV industry in the US">
+<title>Final Project</title>
+<meta name="description" content="Write some words to describe your html page">
 <script>
     //EVENT FUNCTIONS
     $(document).ready(function(){
@@ -343,492 +326,392 @@
 
 <body>
     <main>
-        <section id ="grid">
-    
-            <div class="box">
-                <div class = "box-content">
-                    <h2>WELCOME TO THE ELECTRIC VEHICLE DASHBOARD</h2>
-                </div>
+    <section id ="grid">
+
+        <div class="box">
+            <div class = "box-content">
+                <h5>WELCOME TO THE ELECTRIC VEHICLE DASHBOARD</h5>
             </div>
-    
-            <div class="box">
-                <div class = "box-content">
-                    <h3>MAP SUMMARY</h3>
-                    <br>
-                    <br>
-                    <h5>Map 1: EVs Per Million Population</h5>
-                    <ul>Map 1 is an indication of <b>EV Consumer market maturaty</b> at the state level</ul>
-                    <br>
-                    <h5>Map 2: Num. Public Charging Outlets Per 100 EVs and % Change in Num. Public Charging Outlets Per 100 EVs</h5>
-                    <ul>Map 2 is an indication of <b>EV Supply Equipment (EVSE) infrastructure development</b> and how it's improved or changed over the course of two months at the state level</ul>
-                    <br>
-                    <h5>Map 3: Local Level EV Statistics and Demographics at the ZIP Code Level</h5>
-                    <ul>Map 3 dives into the <b>deployment of EVSE</b> relative to concentrations of different races/ethnicities</ul>
-                </div>
+        </div>
+
+        <div class="box">
+            <div class = "box-content">
+                <h4>PROJECT SUMMARY WILL GO HERE</h4>
             </div>
-    
-            <div class="box">                
-                <section id = "grid-for-map">
-                    <div class="box-for-map">
-                        <div class = "box-for-map-content">
-                            <div class="btn-group">
-                                <button type="button" class ="map-button w3-button w3-black"><b>EVs Per Million Population</b></button>
-                                <button type="button" class ="map-button-2 w3-button w3-cyan"><b>Number of and % Change in Outlets Per 100 EVs</b></button>
-                                <button type="button" class ="map-button-3 w3-button w3-red"><b>NYC EV Stats</b></button>
-                            </div>
-                        </div>        
-                    </div>
-                    <div class="box-for-map">
-                        <div class = "box-for-map-content" id="map">
-                            <div id="map" style="width: 100%; height: 100%; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
-                            leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
-                            <div class = "legend leaflet-control leaflet-bottom leaflet-left">
-                                <h4>NUMBER OF EVS PER MILLION POPULATION</h4>
-                                <i style="background: #fff"></i> <!--  color for <750 (class 1)-->
-                                <span>Less than 750</span>
-                                <br>
-                                <i style="background: #eff"></i> <!--  color for 750 to 999 (class 2) -->
-                                <span>750 to 999</span>
-                                <br>
-                                <i style="background: #cef"></i> <!--  color for 1,000 to 1,099 (class 3) -->
-                                <span>1,000 to 1,099</span>
-                                <br>
-                                <i style="background: #bde"></i> <!--  color for 1,100 to 1,299 (class 4) -->
-                                <span>1,100 to 1,299</span>
-                                <br>
-                                <i style="background: #7bd"></i> <!--  color for 1,300 to 1,799 (class 5) -->
-                                <span>1,300 to 1,799</span>
-                                <br>
-                                <i style="background: #49c"></i> <!--  color for 1,800 to 2,199 (class 6) -->
-                                <span>1,800 to 2,199</span>
-                                <br>
-                                <i style="background: #27d"></i> <!--  color for 2,200 to 3,199 (class 7) -->
-                                <span>2,200 to 3,199</span>
-                                <br>
-                                <i style="background: #15a"></i> <!--  color for 3,200 to 3,899 (class 8) -->
-                                <span>3,200 to 3,899</span>
-                                <br>
-                                <i style="background: #137"></i> <!--  color for 3,900 to 10,839 (class 9) -->
-                                <span>3,900 to 10,839</span>
-                            </div>
-                            </div> 
+        </div>
+
+        <div class="box">                
+            <section id = "grid-for-map">
+                <div class="box-for-map">
+                    <div class = "box-for-map-content">
+                        <div class="btn-group">
+                            <button type="button" class ="map-button w3-button w3-black"><b>EVs Per Million Population</b></button>
+                            <button type="button" class ="map-button-2 w3-button w3-cyan"><b>Number of and % Change in Outlets Per 100 EVs</b></button>
+                            <button type="button" class ="map-button-3 w3-button w3-red"><b>NYC EV Stats</b></button>
                         </div>
-                    </div>
-                    <!--this is the SECOND DIV that will be hidden unless button is clicked-->
-                    <div class="box-for-map">
-                        <div class = "box-for-map-content" id="map_2"> 
-                            <div id="map_2" style="width: 100%; height: 750px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
-                            leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
-                            <div class = "legend leaflet-control leaflet-bottom leaflet-left">
-                                <h4>NUMBER OF CHARGING OUTLETS PER 100 EVS</h4>
-                                <i style="background: #ccc"></i> <!--  color for <750 (class 1)-->
-                                <span>N/A: Less than 1,000 Total Registered EVs</span>
-                                <br>
-                                <i style="background: #fff"></i> <!--  color for less than 10 outlets(class 1)-->
-                                <span>Less than 10</span>
-                                <br>
-                                <i style="background: #eff"></i> <!--  color for 750 to 999 (class 2) -->
-                                <span>10 to 12.99</span>
-                                <br>
-                                <i style="background: #cef"></i> <!--  color for 1,000 to 1,099 (class 3) -->
-                                <span>13 to 14.99</span>
-                                <br>
-                                <i style="background: #bde"></i> <!--  color for 1,100 to 1,299 (class 4) -->
-                                <span>15 to 15.99</span>
-                                <br>
-                                <i style="background: #7bd"></i> <!--  color for 1,300 to 1,799 (class 5) -->
-                                <span>16 to 17.79</span>
-                                <br>
-                                <i style="background: #49c"></i> <!--  color for 1,800 to 2,199 (class 6) -->
-                                <span>17.9 to 20.99</span>
-                                <br>
-                                <i style="background: #27d"></i> <!--  color for 2,200 to 3,199 (class 7) -->
-                                <span>21 to 29.99</span>
-                                <br>
-                                <i style="background: #15a"></i> <!--  color for 3,200 to 3,899 (class 8) -->
-                                <span>30.0 to 37.99</span>
-                                <br>
-                                <i style="background: #137"></i> <!--  color for 3,900 to 10,839 (class 9) -->
-                                <span>38 to 40</span>
-                            </div>
-                            <div class = "legend leaflet-control leaflet-bottom leaflet-right">
-                                <h4>% CHANGE IN NUM CHARING OUTLETS PER 100 EVS</h4>
-                                <i style="background: #f77"></i> 
-                                <span>DECREASE in Num Charging Outlets Per 100 EVs</span> 
-                                <br>
-                                <i style="background: #eff"></i> 
-                                <span>0.0% to 0.69%</span>
-                                <br>
-                                <i style="background: #cef"></i> 
-                                <span>0.70% to 1.02%</span>
-                                <br>
-                                <i style="background: #ade"></i> 
-                                <span>1.03% to 1.99%</span>
-                                <br>
-                                <i style="background: #7bd"></i>
-                                <span>2.0% to 2.79%</span>
-                                <br>
-                                <i style="background: #49c"></i> 
-                                <span>2.8% to 3.99%</span>
-                                <br>
-                                <i style="background: #27b"></i> 
-                                <span>4.0% to 4.99%</span>
-                                <br>
-                                <i style="background: #15a"></i> 
-                                <span>5.0% to 7.99%</span>
-                                <br>
-                                <i style="background: #137"></i>
-                                <span>8.0% to 13.0%</span>
-                            </div>
-                            </div> 
-                        </div>
-                    </div>
-                    <!--this is the THIRD DIV that will be hidden unless button is clicked-->
-                    <div class="box-for-map">
-                        <div class = "box-for-map-content" id="map_3"> 
-                            <div id="map_3" style="width: 100%; height: 750px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
-                            leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
-                            <div class = "legend leaflet-control leaflet-bottom leaflet-left">
-                                <h4>ZIP CODE BLUE AND GREEN OUTLINES</h4>
-                                <i style="background: #194D33"></i> 
-                                <span>IF NO L2 OR DCFC OUTLETS AVAIL</span>
-                                <br>
-                                <i style="background: #0B29FB"></i>
-                                <span>IF FIVE OR LESS L2 OR DCFC OUTLETS AVAIL</span>
-                                <br>
-                            </div>
-                            </div> 
-                        </div>
-                    </div>                                                                   
-                </section>        
-            </div>
-            </div>    
-            <div class="box">
-                <div class = "box-content">
-                    <table class ='w3-table w3-round-large w3-border'>
-                        <thead>
-                            <tr class="w3-teal">
-                                <strong>STATE LEVEL DATA</strong>
-                            </br>
-                                <select id ="state_1" onchange="changeState()">
-                                    <option value>Select a State</option>
-                                    <option value "AL">Alabama</option> <!--1-->
-                                    <option value "AL">Alaska</option> <!--2-->
-                                    <option value "AZ">Arizona</option><!--3-->
-                                    <option value "AR">Arkansas</option>  <!--4-->
-                                    <option value "CA">California</option>  <!--5-->
-                                    <option value "CO">Colorado</option>  <!--6-->
-                                    <option value "CT">Connecticut</option>  <!--7-->
-                                    <option value "DE">Delaware</option>  <!--8-->
-                                    <option value "DC">District of Columbia</option>  <!--9-->
-                                    <option value "FL">Florida</option>  <!--10-->
-                                    <option value "GA">Georgia</option>  <!--11-->
-                                    <option value "HI">Hawaii</option>  <!--12-->
-                                    <option value "ID">Idaho</option>  <!--13-->
-                                    <option value "IL">Illinois</option>  <!--14-->
-                                    <option value "IN">Indiana</option>  <!--15-->
-                                    <option value "IA">Iowa</option>  <!--16-->
-                                    <option value "KS">Kansas</option>  <!--17-->
-                                    <option value "KY">Kentucky</option> <!--18-->
-                                    <option value "LA">Louisiana</option>  <!--19-->
-                                    <option value "ME">Maine</option>  <!--20-->
-                                    <option value "MD">Maryland</option>  <!--21-->
-                                    <option value "MA">Massachussets</option>  <!--22-->
-                                    <option value "MI">Michigan</option>  <!--23-->
-                                    <option value "MN">Minnesota</option> <!--24-->
-                                    <option value "MS">Mississippi</option> <!--25--> 
-                                    <option value "MO">Missouri</option> <!--26-->
-                                    <option value "MT">Montana</option> <!--27-->
-                                    <option value "NE">Nebraska</option> <!--28-->
-                                    <option value "NV">Nevada</option> <!--29-->
-                                    <option value "NH">New Hampshire</option> <!--30-->
-                                    <option value "NJ">New Jersey</option> <!--31-->
-                                    <option value "NM">New Mexico</option> <!--32-->
-                                    <option value "NY">New York</option> <!--33-->
-                                    <option value "NC">North Carolina</option> <!--34-->
-                                    <option value "ND">North Dakota</option> <!--35-->
-                                    <option value "OH">Ohio</option> <!--36-->
-                                    <option value "OK">Oklahoma</option> <!--37-->
-                                    <option value "OR">Oregon</option> <!--38-->
-                                    <option value "PA">Pennsylvania</option> <!--39-->
-                                    <option value "PR">Puerto Rico</option> <!--40-->
-                                    <option value "RI">Rhode Island</option> <!--41-->
-                                    <option value "SC">South Carolina</option> <!--42-->
-                                    <option value "SD">South Dakota</option> <!--43-->
-                                    <option value "TN">Tennessee</option> <!--44-->
-                                    <option value "TX">Texas</option> <!--45-->
-                                    <option value "UT">Utah</option> <!--46-->
-                                    <option value "VT">Vermont</option> <!--47-->
-                                    <option value "VA">Virginia</option> <!--48-->
-                                    <option value "WA">Washington</option> <!--49-->
-                                    <option value "WV">West Virginia</option> <!--50-->
-                                    <option value "WI">Wisconsin</option> <!--51-->
-                                    <option value "WY">Wyoming</option> <!--52-->
-    
-                                </select>         
-                            </tr>
-                        </thead>
-                    </table>
+                    </div>        
                 </div>
-            </div>      
-            <div class="box">
-                <div class = "box-content">
-                    <h5>EV STATISTICS AND DEMOGRAPHIC DATA BY STATE, COUNTY, AND ZIP COMING SOON</h5>
-                </div> 
+                <div class="box-for-map">
+                    <div class = "box-for-map-content" id="map">
+                        <div id="map" style="width: 100%; height: 750px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
+                        leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
+                        <div class = "legend leaflet-control leaflet-bottom leaflet-left">
+                            <h4>NUMBER OF EVS PER MILLION POPULATION</h4>
+                            <i style="background: #fff"></i> <!--  color for <750 (class 1)-->
+                            <span>Less than 750</span>
+                            <br>
+                            <i style="background: #eff"></i> <!--  color for 750 to 999 (class 2) -->
+                            <span>750 to 999</span>
+                            <br>
+                            <i style="background: #cef"></i> <!--  color for 1,000 to 1,099 (class 3) -->
+                            <span>1,000 to 1,099</span>
+                            <br>
+                            <i style="background: #bde"></i> <!--  color for 1,100 to 1,299 (class 4) -->
+                            <span>1,100 to 1,299</span>
+                            <br>
+                            <i style="background: #7bd"></i> <!--  color for 1,300 to 1,799 (class 5) -->
+                            <span>1,300 to 1,799</span>
+                            <br>
+                            <i style="background: #49c"></i> <!--  color for 1,800 to 2,199 (class 6) -->
+                            <span>1,800 to 2,199</span>
+                            <br>
+                            <i style="background: #27d"></i> <!--  color for 2,200 to 3,199 (class 7) -->
+                            <span>2,200 to 3,199</span>
+                            <br>
+                            <i style="background: #15a"></i> <!--  color for 3,200 to 3,899 (class 8) -->
+                            <span>3,200 to 3,899</span>
+                            <br>
+                            <i style="background: #137"></i> <!--  color for 3,900 to 10,839 (class 9) -->
+                            <span>3,900 to 10,839</span>
+                        </div>
+                        </div> 
+                    </div>
+                </div>
+                <!--this is the SECOND DIV that will be hidden unless button is clicked-->
+                <div class="box-for-map">
+                    <div class = "box-for-map-content" id="map_2"> 
+                        <div id="map_2" style="width: 100%; height: 750px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
+                        leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
+                        <div class = "legend leaflet-control leaflet-bottom leaflet-left">
+                            <h4>NUMBER OF CHARGING OUTLETS PER 100 EVS</h4>
+                            <i style="background: #ccc"></i> <!--  color for <750 (class 1)-->
+                            <span>N/A: Less than 1,000 Total Registered EVs</span>
+                            <br>
+                            <i style="background: #fff"></i> <!--  color for less than 10 outlets(class 1)-->
+                            <span>Less than 10</span>
+                            <br>
+                            <i style="background: #eff"></i> <!--  color for 750 to 999 (class 2) -->
+                            <span>10 to 12.99</span>
+                            <br>
+                            <i style="background: #cef"></i> <!--  color for 1,000 to 1,099 (class 3) -->
+                            <span>13 to 14.99</span>
+                            <br>
+                            <i style="background: #bde"></i> <!--  color for 1,100 to 1,299 (class 4) -->
+                            <span>15 to 15.99</span>
+                            <br>
+                            <i style="background: #7bd"></i> <!--  color for 1,300 to 1,799 (class 5) -->
+                            <span>16 to 17.79</span>
+                            <br>
+                            <i style="background: #49c"></i> <!--  color for 1,800 to 2,199 (class 6) -->
+                            <span>17.9 to 20.99</span>
+                            <br>
+                            <i style="background: #27d"></i> <!--  color for 2,200 to 3,199 (class 7) -->
+                            <span>21 to 29.99</span>
+                            <br>
+                            <i style="background: #15a"></i> <!--  color for 3,200 to 3,899 (class 8) -->
+                            <span>30.0 to 37.99</span>
+                            <br>
+                            <i style="background: #137"></i> <!--  color for 3,900 to 10,839 (class 9) -->
+                            <span>38 to 40</span>
+                        </div>
+                        <div class = "legend leaflet-control leaflet-bottom leaflet-right">
+                            <h4>% CHANGE IN NUM CHARING OUTLETS PER 100 EVS</h4>
+                            <i style="background: #f77"></i> 
+                            <span>DECREASE in Num Charging Outlets Per 100 EVs</span> 
+                            <br>
+                            <i style="background: #eff"></i> 
+                            <span>0.0% to 0.69%</span>
+                            <br>
+                            <i style="background: #cef"></i> 
+                            <span>0.70% to 1.02%</span>
+                            <br>
+                            <i style="background: #ade"></i> 
+                            <span>1.03% to 1.99%</span>
+                            <br>
+                            <i style="background: #7bd"></i>
+                            <span>2.0% to 2.79%</span>
+                            <br>
+                            <i style="background: #49c"></i> 
+                            <span>2.8% to 3.99%</span>
+                            <br>
+                            <i style="background: #27b"></i> 
+                            <span>4.0% to 4.99%</span>
+                            <br>
+                            <i style="background: #15a"></i> 
+                            <span>5.0% to 7.99%</span>
+                            <br>
+                            <i style="background: #137"></i>
+                            <span>8.0% to 13.0%</span>
+                        </div>
+                        </div> 
+                    </div>
+                </div>
+                <!--this is the THIRD DIV that will be hidden unless button is clicked-->
+                <div class="box-for-map">
+                    <div class = "box-for-map-content" id="map_3"> 
+                        <div id="map_3" style="width: 100%; height: 750px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
+                        leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
+                        </div> 
+                    </div>
+                </div>                                                                   
+            </section>        
+        </div>
+        </div>    
+        <div class="box">
+            <div class = "box-content">
+                <table class ='w3-table w3-round-large w3-border'>
+                    <thead>
+                        <tr class="w3-teal">
+                            <strong>STATE LEVEL DATA</strong>
+                        </br>
+                            <select id ="state_1" onchange="changeState()">
+                                <option value>Select a State</option>
+                                <option value "AL">Alabama</option> <!--1-->
+                                <option value "AL">Alaska</option> <!--2-->
+                                <option value "AZ">Arizona</option><!--3-->
+                                <option value "AR">Arkansas</option>  <!--4-->
+                                <option value "CA">California</option>  <!--5-->
+                                <option value "CO">Colorado</option>  <!--6-->
+                                <option value "CT">Connecticut</option>  <!--7-->
+                                <option value "DE">Delaware</option>  <!--8-->
+                                <option value "DC">District of Columbia</option>  <!--9-->
+                                <option value "FL">Florida</option>  <!--10-->
+                                <option value "GA">Georgia</option>  <!--11-->
+                                <option value "HI">Hawaii</option>  <!--12-->
+                                <option value "ID">Idaho</option>  <!--13-->
+                                <option value "IL">Illinois</option>  <!--14-->
+                                <option value "IN">Indiana</option>  <!--15-->
+                                <option value "IA">Iowa</option>  <!--16-->
+                                <option value "KS">Kansas</option>  <!--17-->
+                                <option value "KY">Kentucky</option> <!--18-->
+                                <option value "LA">Louisiana</option>  <!--19-->
+                                <option value "ME">Maine</option>  <!--20-->
+                                <option value "MD">Maryland</option>  <!--21-->
+                                <option value "MA">Massachussets</option>  <!--22-->
+                                <option value "MI">Michigan</option>  <!--23-->
+                                <option value "MN">Minnesota</option> <!--24-->
+                                <option value "MS">Mississippi</option> <!--25--> 
+                                <option value "MO">Missouri</option> <!--26-->
+                                <option value "MT">Montana</option> <!--27-->
+                                <option value "NE">Nebraska</option> <!--28-->
+                                <option value "NV">Nevada</option> <!--29-->
+                                <option value "NH">New Hampshire</option> <!--30-->
+                                <option value "NJ">New Jersey</option> <!--31-->
+                                <option value "NM">New Mexico</option> <!--32-->
+                                <option value "NY">New York</option> <!--33-->
+                                <option value "NC">North Carolina</option> <!--34-->
+                                <option value "ND">North Dakota</option> <!--35-->
+                                <option value "OH">Ohio</option> <!--36-->
+                                <option value "OK">Oklahoma</option> <!--37-->
+                                <option value "OR">Oregon</option> <!--38-->
+                                <option value "PA">Pennsylvania</option> <!--39-->
+                                <option value "PR">Puerto Rico</option> <!--40-->
+                                <option value "RI">Rhode Island</option> <!--41-->
+                                <option value "SC">South Carolina</option> <!--42-->
+                                <option value "SD">South Dakota</option> <!--43-->
+                                <option value "TN">Tennessee</option> <!--44-->
+                                <option value "TX">Texas</option> <!--45-->
+                                <option value "UT">Utah</option> <!--46-->
+                                <option value "VT">Vermont</option> <!--47-->
+                                <option value "VA">Virginia</option> <!--48-->
+                                <option value "WA">Washington</option> <!--49-->
+                                <option value "WV">West Virginia</option> <!--50-->
+                                <option value "WI">Wisconsin</option> <!--51-->
+                                <option value "WY">Wyoming</option> <!--52-->
+
+                            </select>         
+                        </tr>
+                    </thead>
+                </table>
             </div>
-    
-        </section>
-        </main>
+        </div>      
+        <div class="box">
+            <div class = "box-content">
+                <h5>EV STATISTICS AND DEMOGRAPHIC DATA BY STATE, COUNTY, AND ZIP COMING SOON</h5>
+            </div> 
+        </div>
+
+    </section>
+    </main>
+
     <!-- SCRIPT FOR THE FIRST MAP -->
 
     <script>
-        var map = L.map('map').setView([39.74739, -97], 5);
-        
-        var baseLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-            maxZoom: 12,
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            id: 'mapbox/light-v9',
-            tileSize: 512,
-            zoomOffset: -1
-        })
+    var map = L.map('map').setView([39.74739, -97], 5);
     
-        var baseLayer_osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-        
-        function onEachFeatureEVs(feature, layer) {
-            var popupContent = "<p><strong> State: </strong>" + feature.properties.state_1 +
-                "</br> <strong>April Ratio Outlets to 100 EVs: </strong>" + feature.properties.ap_ratio_1 +
-                "</br><strong> Pct Change Ratio Outlets to 100 EVs Feb - Apr: </strong>" + Math.round(feature.properties.change_p_1)+"%" +
-                "</br><strong> Num EVs: </strong>" + feature.properties.count_evs +
-                "</br><strong> EVs Per Million Population: </strong>" + Math.round(feature.properties.evs_per_mi) + "</p>";
+    var baseLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        maxZoom: 12,
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+            '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        id: 'mapbox/light-v9',
+        tileSize: 512,
+        zoomOffset: -1
+    })
+
+    var baseLayer_osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
     
-            if (feature.properties && feature.properties.popupContent) {
-                popupContent += feature.attributes.popupContent;
-            }
-    
-            layer.bindPopup(popupContent);
-    
-            layer.on({
-                mouseover: function (e) {
-                    e.target.setStyle({ color: "#f6ff00", weight: 3 }),
-                    e.target.bindTooltip(feature.properties.state_1).openTooltip()},
-                mouseout: (e) => {
-                    EVLayer2.resetStyle(e.target),
-                    EVLayer2.closeTooltip(),
-                    EVLayer2.closePopup(),
-                    EVLayer.resetStyle(e.target),
-                    EVLayer.closeTooltip(),
-                    EVLayer.closePopup()},
-                click: (e) => {
-                    EVLayer2.closeTooltip(),
-                    EVLayer.closeTooltip()}
-            });             
+    function onEachFeatureEVs(feature, layer) {
+        var popupContent = "<p><strong>State: </strong>" + feature.properties.state_1 +
+            "</br><strong> EVs Per Million Population: </strong>" +  Math.round(feature.properties.evs_per_mi) +
+            "</br><strong> Num EVs: </strong>" + feature.properties.count_evs +
+            "</br><strong> April Ratio Outlets to 100 EVs: </strong>" + feature.properties.ap_ratio_1 +
+            "</br><strong> Pct Change Ratio Outlets to 100 EVs Feb - Apr: </strong>" + Math.round(feature.properties.change_p_1)+"%" +"</p>";
+
+        if (feature.properties && feature.properties.popupContent) {
+            popupContent += feature.attributes.popupContent;
+        }
+
+        layer.bindPopup(popupContent);
+
+        layer.on({
+            mouseover: function (e) {
+                e.target.setStyle({ color: "#f6ff00", weight: 3 }),
+                e.target.bindTooltip(feature.properties.state_1).openTooltip()},
+            mouseout: (e) => {
+                EVLayer.resetStyle(e.target),
+                EVLayer.closeTooltip(),
+                EVLayer.closePopup()},
+            click: (e) => {
+                EVLayer.closeTooltip()}
+        });             
         };
-    
-        var EVLayer2 = L.geoJSON(null, {
-     
-            color: '#ffffff', 
-            onEachFeature: onEachFeatureEVs,
-            });
-    
-        var EVLayer = L.geoJSON(null, {
-            color: '#ffffff', 
-            onEachFeature: onEachFeatureEVs,
+
+
+
+    var EVLayer = L.geoJSON(null, {
+ 
+        color: '#ffffff', 
+        onEachFeature: onEachFeatureEVs,
         }).addTo(map);
-            
-        var EVLayer_pct = L.geoJSON(null, {
-            
-            color: '#ffffff', 
-            onEachFeature: onEachFeatureEVs_3,
-         });
+
     
-        fetch('./MASTER_us_states.geojson')
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            console.log(data);
-            var maxVal = -Infinity, minVal = Infinity;
+    $.getJSON("./MASTER_us_states.geojson", function (data) {
+
+        console.log(data);
+        //console.log(data.features.length);
         
-            var allVals = [];
-            var allVals_pct =[];
-            var allVals_EV1=[];
-    
-            var maxVal_pct = -Infinity, minVal_pct = Infinity;
-            var maxVal_EV1 = -Infinity, minVal_EV1 = Infinity;
-    
-            data.features.forEach((f, i) => {
-                if (f.properties.count_evs > 500) {
-                    maxVal_EV1 = Math.max(maxVal_EV1, f.properties.evs_per_mi);
-                    minVal_EV1 = Math.min(minVal_EV1, f.properties.evs_per_mi);
-                    allVals_EV1.push(f.properties.evs_per_mi);
-                }
-    
-                if (f.properties.ap_ratio_1 > 0) {
-                    maxVal = Math.max(maxVal, f.properties.ap_ratio_1);
-                    minVal = Math.min(minVal, f.properties.ap_ratio_1);
-                    
-    
-                    maxVal_pct = Math.max(maxVal_pct, f.properties.change_p_1);
-                    minVal_pct = Math.min(minVal_pct, f.properties.change_p_1);
-                    allVals_pct.push(f.properties.change_p_1);
-                    allVals.push(f.properties.ap_ratio_1);
-                }
-            });  
-            var valRange = maxVal - minVal;
-            var valRange_pct = maxVal_pct - minVal_pct;
-            var valRange_EV1 = maxVal_EV1 - minVal_EV1;
-    
-            var colIntpl = d3.scaleQuantile()
-                .domain(allVals)
-                .range(d3.schemeBlues[9]);
-    
-            var colIntpl_EV1 = d3.scaleQuantile()
-                .domain(allVals_EV1)
-                .range(d3.schemeBlues[9]);
-    
-            var colIntpl_pct = d3.scaleQuantile()
-                .domain(allVals_pct)
-                .range(d3.schemeBlues[9]);
-    
-            function styleColor(outlets_per_100evs,count_evs){
-                if (count_evs<1000){
-                    return "#babab8"
-                }
-                if (count_evs>999.99){
-                    return colIntpl(outlets_per_100evs)
-                }
+        EVLayer.addData(data);
+    });
+
+    fetch('./MASTER_us_states.geojson')
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+
+
+        console.log(data);
+        var maxVal = -Infinity, minVal = Infinity;
+        var allVals = [];
+
+        data.features.forEach((f, i) => {
+            if (f.properties.count_evs > 500) {
+                maxVal = Math.max(maxVal, f.properties.evs_per_mi);
+                minVal = Math.min(minVal, f.properties.evs_per_mi);
+                allVals.push(f.properties.evs_per_mi);
             }
-    
-            function styleColor_pct(change_p_1){                
-                    if (change_p_1<0){
-                        return "#f2766f"
-                    }
-                    // if (count_evs>999.99){
-                    return colIntpl_pct(change_p_1)
-                    // }
-                }
-            
-            data.features.forEach((f,i) =>{
-                EVLayer_pct.options.style = (f) => {
-                        return {
-                            fillColor: styleColor_pct(f.properties.change_p_1),
-                            color: "#ffffff",
-                            weight: 1,
-                            fillOpacity: .8
-                        }
-                    ;
-                }
-                if (f.properties.count_evs > 1000) {
-                    EVLayer2.options.style = (f) => {
-                        return {
-                            fillColor: styleColor(f.properties.ap_ratio_1,f.properties.count_evs),
-                            color: "#ffffff",
-                            weight: 1,
-                            fillOpacity: .8
-                        }
-                    };
-    
-                EVLayer.options.style = (f) => {
-                    return {
-                        fillColor: colIntpl_EV1(f.properties.evs_per_mi),
-                        color: "#ffffff",
-                        weight: 1,
-                        fillOpacity: 1
-                    }
-                }
+        });  
+        var valRange = maxVal - minVal;
+        var colIntpl = d3.scaleQuantile()
+            .domain(allVals)
+            .range(d3.schemeBlues[9]);
+
+        EVLayer.options.style = (f) => {
+            return {
+                fillColor: colIntpl(f.properties.evs_per_mi),
+                color: "#ffffff",
+                weight: 1,
+                fillOpacity: 1
             }
-    
-            EVLayer.addData(data);
-            EVLayer2.addData(data);
-            EVLayer_pct.addData(data);
-            });
-        });
-    
-        
-        function onEachFeatureEVs_3(feature, layer) {
-                var popupContent = "<p><strong> State: </strong>" + feature.properties.state_1 +
-                    "</br><strong> Pct Change Ratio Outlets to 100 EVs Feb - Apr: </strong>" + Math.round(feature.properties.change_p_1).toFixed(2)+"%" +
-                    "</br> <strong>Num Change in Ratio of Outlets to 100 EVs Feb - Apr: </strong>" + feature.properties.change_out +                
-                    "</br><strong> Num EVs: </strong>" + feature.properties.count_evs +
-                    "</br><strong> EVs Per Million Population: </strong>" + Math.round(feature.properties.evs_per_mi) + "</p>";
-        
-                if (feature.properties && feature.properties.popupContent) {
-                    popupContent += feature.attributes.popupContent;
-                }
-        
-                layer.bindPopup(popupContent);
-        
-                layer.on({
-                    mouseover: function (e) {
-                        e.target.setStyle({ color: "#f6ff00", weight: 3 }),
-                        e.target.bindTooltip(feature.properties.state_1).openTooltip()},
-                    mouseout: (e) => {
-                        EVLayer_pct.resetStyle(e.target),
-                        EVLayer_pct.closeTooltip(),
-                        EVLayer_pct.closePopup()},
-                    click: (e) => {
-                        EVLayer_pct.closeTooltip()}
-                });             
-                };
-        
-        
-    
-        var baseMaps = {
-            "Mapbox": baseLayer,
-            "OSM": baseLayer_osm
-        };
-    
-        var overlayMaps = {
-            "EVs Per Million Population": EVLayer,
-            "Num Outlets Per 100 EVs, by State": EVLayer2,
-            "% Change in Num Outlets Per 100 EVs, by State":EVLayer_pct
-        };
-    
-        var lC = L.control.layers(baseMaps, overlayMaps, {collapsed: true, hideSingleBase: true },).addTo(map);//.expand();
-    
-        var lcDIVElem = lC.getContainer();
-        document.addEventListener("keydown", (e) => {
-            if (e.key === 'l' | e.key === 'L') {
-                if (lcDIVElem.style.display == "") {
-                    lcDIVElem.style.display = "none";
-                } else {
-                    lcDIVElem.style.display = "";
-                }
+        };       
+        EVLayer.myExtraData = [maxVal, minVal, valRange,
+            d3.scalePow()
+                .exponent(0.5)
+                .domain([0, maxVal])
+                .range([0, 20])];
+        EVLayer.addData(data);
+    });
+
+   
+    //SCRIPT FOR DROP DOWN
+    changeState = () => {
+        var curState = document.getElementById("state_1");
+        var curStateTxt = curState.options[curState.selectedIndex].text;
+
+        //document.getElementById("chosenState").innerHTML = curStateTxt;
+        // or using jQuery
+        $("#chosenState").html(curStateTxt);
+
+        // Question: How can I get other information about this state?
+      };
+
+
+
+    var baseMaps = {
+        "Mapbox": baseLayer,
+        "OSM": baseLayer_osm
+    };
+
+    var overlayMaps = {
+        "EV Stats by State": EVLayer,
+    };
+
+    var lC = L.control.layers(baseMaps, overlayMaps, {collapsed: true, hideSingleBase: true },).addTo(map);//.expand();
+
+    var lcDIVElem = lC.getContainer();
+    document.addEventListener("keydown", (e) => {
+        if (e.key === 'l' | e.key === 'L') {
+            if (lcDIVElem.style.display == "") {
+                lcDIVElem.style.display = "none";
+            } else {
+                lcDIVElem.style.display = "";
             }
-        });
-    //SEARCH CONTROL
-        /*
-        https://github.com/stefanocudini/leaflet-search
+        }
+    });
+
+
+//SEARCH CONTROL
+    /*
+    https://github.com/stefanocudini/leaflet-search
+
+    Configure the OpenStreetMap nominatim
+    https://nominatim.org/release-docs/develop/api/Overview/
+    https://nominatim.org/release-docs/develop/api/Search/
+    */
+    var osmGeocoderControl = new L.Control.Search({
+        url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}&countrycodes=us',
+        jsonpParam: 'json_callback',
+        propertyName: 'display_name',
+        propertyLoc: ['lat', 'lon'],
+        marker: L.circleMarker([0, 0], { radius: 30 }),
+        autoCollapse: true,
+        autoType: false,
+        minLength: 2,
+        position: 'topleft',
+        container: '',
+        moveToLocation: (latlng, name, map) => {
+            USstatesLayerB.eachLayer((l) => {
+                if (turf.booleanPointInPolygon(turf.point([latlng.lng, latlng.lat]), l.feature)){
+                    l.setStyle({ fillColor: "#555" });
+
+                    return; // to break out the eachLayer loop. "break;" does not work here.
+                } 
+            }); map.setView(latlng, 8);
+        }
+    });
+    map.addControl(osmGeocoderControl);    
     
-        Configure the OpenStreetMap nominatim
-        https://nominatim.org/release-docs/develop/api/Overview/
-        https://nominatim.org/release-docs/develop/api/Search/
-        */
-        var osmGeocoderControl = new L.Control.Search({
-            url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}&countrycodes=us',
-            jsonpParam: 'json_callback',
-            propertyName: 'display_name',
-            propertyLoc: ['lat', 'lon'],
-            marker: L.circleMarker([0, 0], { radius: 30 }),
-            autoCollapse: true,
-            autoType: false,
-            minLength: 2,
-            position: 'topleft',
-            container: '',
-            moveToLocation: (latlng, name, map) => {
-                USstatesLayerB.eachLayer((l) => {
-                    if (turf.booleanPointInPolygon(turf.point([latlng.lng, latlng.lat]), l.feature)){
-                        l.setStyle({ fillColor: "#555" });
-    
-                        return; // to break out the eachLayer loop. "break;" does not work here.
-                    } 
-                }); map.setView(latlng, 8);
-            }
-        });
-        map.addControl(osmGeocoderControl);    
-        
     </script>
 
     <!-- SCRIPT FOR THE SECOND MAP -->
@@ -871,7 +754,9 @@
             click: (e) => {
                 EVLayer2.closeTooltip()}
         });             
-    };
+        };
+
+
 
     var EVLayer2 = L.geoJSON(null, {
  
@@ -879,16 +764,14 @@
         onEachFeature: onEachFeatureEVs,
         }).addTo(map_2);
 
-    var EVLayer = L.geoJSON(null, {
-        color: '#ffffff', 
-        onEachFeature: onEachFeatureEVs,
-    })
+    
+    $.getJSON("./MASTER_us_states.geojson", function (data) {
+
+        console.log(data);
+        //console.log(data.features.length);
         
-    var EVLayer_pct = L.geoJSON(null, {
-        
-        color: '#ffffff', 
-        onEachFeature: onEachFeatureEVs_3,
-     });
+        EVLayer2.addData(data);
+    });
 
     fetch('./MASTER_us_states.geojson')
     .then((response) => {
@@ -897,46 +780,18 @@
     .then((data) => {
         console.log(data);
         var maxVal = -Infinity, minVal = Infinity;
-    
         var allVals = [];
-        var allVals_pct =[];
-        var allVals_EV1=[];
-
-        var maxVal_pct = -Infinity, minVal_pct = Infinity;
-        var maxVal_EV1 = -Infinity, minVal_EV1 = Infinity;
 
         data.features.forEach((f, i) => {
-            if (f.properties.count_evs > 500) {
-                maxVal_EV1 = Math.max(maxVal_EV1, f.properties.evs_per_mi);
-                minVal_EV1 = Math.min(minVal_EV1, f.properties.evs_per_mi);
-                allVals_EV1.push(f.properties.evs_per_mi);
-            }
-
             if (f.properties.ap_ratio_1 > 0) {
                 maxVal = Math.max(maxVal, f.properties.ap_ratio_1);
                 minVal = Math.min(minVal, f.properties.ap_ratio_1);
-                
-
-                maxVal_pct = Math.max(maxVal_pct, f.properties.change_p_1);
-                minVal_pct = Math.min(minVal_pct, f.properties.change_p_1);
-                allVals_pct.push(f.properties.change_p_1);
                 allVals.push(f.properties.ap_ratio_1);
             }
         });  
         var valRange = maxVal - minVal;
-        var valRange_pct = maxVal_pct - minVal_pct;
-        var valRange_EV1 = maxVal_EV1 - minVal_EV1;
-
         var colIntpl = d3.scaleQuantile()
             .domain(allVals)
-            .range(d3.schemeBlues[9]);
-
-        var colIntpl_EV1 = d3.scaleQuantile()
-            .domain(allVals_EV1)
-            .range(d3.schemeBlues[9]);
-
-        var colIntpl_pct = d3.scaleQuantile()
-            .domain(allVals_pct)
             .range(d3.schemeBlues[9]);
 
         function styleColor(outlets_per_100evs,count_evs){
@@ -948,25 +803,7 @@
             }
         }
 
-        function styleColor_pct(change_p_1){                
-                if (change_p_1<0){
-                    return "#f2766f"
-                }
-                // if (count_evs>999.99){
-                return colIntpl_pct(change_p_1)
-                // }
-            }
-        
         data.features.forEach((f,i) =>{
-            EVLayer_pct.options.style = (f) => {
-                    return {
-                        fillColor: styleColor_pct(f.properties.change_p_1),
-                        color: "#ffffff",
-                        weight: 1,
-                        fillOpacity: .8
-                    }
-                ;
-            }
             if (f.properties.count_evs > 1000) {
                 EVLayer2.options.style = (f) => {
                     return {
@@ -976,24 +813,11 @@
                         fillOpacity: .8
                     }
                 };
-
-            EVLayer.options.style = (f) => {
-                return {
-                    fillColor: colIntpl_EV1(f.properties.evs_per_mi),
-                    color: "#ffffff",
-                    weight: 1,
-                    fillOpacity: 1
-                }
             }
-        }
-
-        EVLayer.addData(data);
         EVLayer2.addData(data);
-        EVLayer_pct.addData(data);
-        });
+    });
     });
 
-    
     function onEachFeatureEVs_3(feature, layer) {
             var popupContent = "<p><strong> State: </strong>" + feature.properties.state_1 +
                 "</br><strong> Pct Change Ratio Outlets to 100 EVs Feb - Apr: </strong>" + Math.round(feature.properties.change_p_1).toFixed(2)+"%" +
@@ -1021,6 +845,65 @@
             };
     
     
+    
+        var EVLayer_pct = L.geoJSON(null, {
+     
+            color: '#ffffff', 
+            onEachFeature: onEachFeatureEVs_3,
+            })
+    
+        
+        $.getJSON("./MASTER_us_states_2.geojson", function (data) {
+    
+            console.log(data);
+            //console.log(data.features.length);
+            
+            EVLayer_pct.addData(data);
+        });
+    
+        fetch('./MASTER_us_states_2.geojson')
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+            var maxVal = -Infinity, minVal = Infinity;
+            var allVals = [];
+    
+            data.features.forEach((f, i) => {
+                if (f.properties.ap_ratio_1 > 0) {
+                    maxVal = Math.max(maxVal, f.properties.change_p_1);
+                    minVal = Math.min(minVal, f.properties.change_p_1);
+                    allVals.push(f.properties.change_p_1);
+                }
+            });  
+            var valRange = maxVal - minVal;
+            var colIntpl = d3.scaleQuantile()
+                .domain(allVals)
+                .range(d3.schemeBlues[9]);
+    
+            function styleColor(change_p_1,count_evs){                
+                if (change_p_1<0){
+                    return "#f2766f"
+                }
+                // if (count_evs>999.99){
+                return colIntpl(change_p_1)
+                // }
+            }    
+            data.features.forEach((f,i) =>{
+                EVLayer_pct.options.style = (f) => {
+                    return {
+                        fillColor: styleColor(f.properties.change_p_1,f.properties.count_evs),
+                        color: "#ffffff",
+                        weight: 1,
+                        fillOpacity: .8
+                };
+                }
+                EVLayer_pct.addData(data);
+        });
+        });
+
+
 
     var baseMaps = {
         "Mapbox": baseLayer,
@@ -1028,7 +911,6 @@
     };
 
     var overlayMaps = {
-        "EVs Per Million Population": EVLayer,
         "Num Outlets Per 100 EVs, by State": EVLayer2,
         "% Change in Num Outlets Per 100 EVs, by State":EVLayer_pct
     };
@@ -1158,17 +1040,13 @@
                     ZIPs_NYC_asian.closePopup(),
                     ZIPs_NYC_hisp.resetStyle(e.target),
                     ZIPs_NYC_hisp.closeTooltip(),
-                    ZIPs_NYC_hisp.closePopup(),
-                    ZIPs_NYC_pop_den.resetStyle(e.target),
-                    ZIPs_NYC_pop_den.closeTooltip(),
-                    ZIPs_NYC_pop_den.closePopup()
+                    ZIPs_NYC_hisp.closePopup()
                 },
                 click: (e) => {
                     ZIPs_NYC_black.closeTooltip()
                     ZIPs_NYC_asian.closeTooltip()
                     ZIPs_NYC_white.closeTooltip()
                     ZIPs_NYC_hisp.closeTooltip()
-                    ZIPs_NYC_pop_den.closeTooltip()
                 }
             });             
             };
@@ -1192,8 +1070,8 @@
                             e.target.setStyle({ radius: 17, color: "#9b090b",weight: 3});
                             e.target.openPopup()},
                         mouseout: (e) => {
-                            stationsApr_type.resetStyle(e.target),
-                            stationsApr_type.closePopup(e.target)},
+                            stationsApr_outlets.resetStyle(e.target),
+                            stationsApr_outlets.closePopup(e.target)},
                     });
             };
 
@@ -1275,16 +1153,6 @@
                 if (d<=30.81) return "#f71";
                 if (d<=51.7) return "#e50";
                 if (d<=77.79) return "#930";
-            }
-
-            function get_fillColor_pop_den(d){
-                if (d<=11184.577384) return "#fff";
-                if (d<=18803.709219) return "#eef";
-                if (d<=29704.115637) return "#cce";
-                if (d<=39317.450304) return "#aad";
-                if (d<=52509.213375) return "#88c";
-                if (d<=72058.617103) return "#75a";
-                if (d<=508254.462900) return "#518";
             }
 
 
@@ -1369,27 +1237,6 @@
                 return div;
             };
 
-            var legend_pop_den = L.control({position: 'bottomright', opacity: 0.8});
-            legend_pop_den.onAdd = function (map_3) {
-
-                var div = L.DomUtil.create('div', 'info legend'),
-                Dens_Tot_P = [0, 11185, 18804, 29704, 39317,
-                52509, 72058],
-                    labels = ["Population Density (Pop/Sq Mi)"],
-                    from, to;
-
-                for (var i = 0; i < Dens_Tot_P.length; i++) {
-                    from = Dens_Tot_P[i];
-                    to = Dens_Tot_P[i + 1];
-
-                    labels.push(
-                        '<i style="background:' + get_fillColor_pop_den(from + 1) + '"></i> ' +
-                        from + (to ? '&ndash;' + to : '+'));
-                }
-
-                div.innerHTML = labels.join('<br>');
-                return div;
-            };
             
             var legend_white = L.control({position: 'bottomright', opacity: 0.8});
             legend_white.onAdd = function (map_3) {
@@ -1499,12 +1346,6 @@
                 color: '#ffffff', 
                 onEachFeature: onEachFeatureEVs_ZIPs_outlets,
                 }).addTo(map_3);
-            
-            var ZIPs_NYC_pop_den = L.geoJSON(null, {           
-                color: '#ffffff', 
-                onEachFeature: onEachFeatureEVs_ZIPs,
-            })
-            
             var ZIPs_NYC_asian = L.geoJSON(null, {           
                 color: '#ffffff', 
                 onEachFeature: onEachFeatureEVs_ZIPs,
@@ -1573,70 +1414,12 @@
             });
             //END ZIPS OUTLET LAYER
 
-            //ZIPS POP DENSITY LAYER    
-            $.getJSON("./zips_select_NYC_CLEAN2.geojson", function (data) {
-                console.log(data);
-                //console.log(data.features.length);
-
-                ZIPs_NYC_pop_den.addData(data);
-            });
-
-            fetch('./zips_select_NYC_CLEAN2.geojson')
-            .then((response) => {
-            return response.json();
-            })
-            .then((data) => {
-                console.log(data);
-                var maxVal = -Infinity, minVal = Infinity;
-                var allVals = [];
-
-                data.features.forEach((f, i) => {
-                    maxVal = Math.max(maxVal, f.properties.Dens_Tot_P);
-                    minVal = Math.min(minVal, f.properties.Dens_Tot_P);
-                    allVals.push(f.properties.Dens_Tot_P);
-                });  
-                var valRange = maxVal - minVal;
-                var colIntpl = d3.scaleQuantile()
-                    .domain(allVals)
-                    .range(d3.schemePurples[7]);
-
-                function styleOutline(num_l2_dcf){
-                    if (num_l2_dcf==0){
-                        return "#194D33"
-                    }
-                    if (num_l2_dcf <6){
-                        return "#0B29FB"
-                    }
-                    return "#ffffff"
-                }
-
-                function styleWeight(num_l2_dcf){
-                    if (num_l2_dcf<6){
-                        return 2.5
-                    }
-                    return 1
-                }
-
-                data.features.forEach((f,i) =>{
-                    ZIPs_NYC_pop_den.options.style = (f) => {
-                        return {
-                            fillColor: colIntpl(f.properties.Dens_Tot_P),
-                            color: styleOutline(f.properties.num_l2_dcf),
-                            weight: styleWeight(f.properties.num_l2_dcf),
-                            fillOpacity: .9
-                    };
-                    }
-                    ZIPs_NYC_pop_den.addData(data);
-                });
-            });
-            //END ZIPS POP DENSITY LAYER
-
             //ZIPS PCT ASIAN LAYER    
             $.getJSON("./zips_select_NYC_CLEAN2.geojson", function (data) {
                 console.log(data);
                 //console.log(data.features.length);
 
-                ZIPs_NYC_asian.addData(data);
+                ZIPs_NYC_black.addData(data);
             });
 
             fetch('./zips_select_NYC_CLEAN2.geojson')
@@ -1752,7 +1535,7 @@
                 console.log(data);
                 //console.log(data.features.length);
 
-                ZIPs_NYC_hisp.addData(data);
+                ZIPs_NYC_black.addData(data);
             });
 
             fetch('./zips_select_NYC_CLEAN2.geojson')
@@ -1864,36 +1647,36 @@
             });
             //END ZIPS PCT WHITE LAYER
 
-            // var stationsApr_outlets = L.geoJson(null, {
-            //     pointToLayer: function (feature, latlng) {
-            //         //let val = getColor_stations_outlets("");
-            //         return L.circleMarker(latlng, {
-            //             fillColor: getColor_stations_outlets(feature.properties.all_l2_dcf),
-            //             fillOpacity: 1,
-            //             weight: getWeight_stations_outlets(feature.properties.num_dcfc),
-            //             radius: getRadius_stations_outlets(feature.properties.all_l2_dcf),
-            //             color: getStroke_stations_outlets(feature.properties.num_dcfc)
-            //         });
-            //     },
-            //     onEachFeature: onEachFeatureStations
-            // });
+            var stationsApr_outlets = L.geoJson(null, {
+                pointToLayer: function (feature, latlng) {
+                    //let val = getColor_stations_outlets("");
+                    return L.circleMarker(latlng, {
+                        fillColor: getColor_stations_outlets(feature.properties.all_l2_dcf),
+                        fillOpacity: 1,
+                        weight: getWeight_stations_outlets(feature.properties.num_dcfc),
+                        radius: getRadius_stations_outlets(feature.properties.all_l2_dcf),
+                        color: getStroke_stations_outlets(feature.properties.num_dcfc)
+                    });
+                },
+                onEachFeature: onEachFeatureStations
+            });
 
             //add data for both stations type and stations outlet
             $.getJSON("./afdc_data_nyc_04_23_2022.geojson", function (data) {
                 console.log(data);
                 console.log(data.features.length);
 
-                stationsApr_type.addData(data)
-                //stationsApr_outlets.addData(data)
+                stationsApr_type.addData(data),
+                stationsApr_outlets.addData(data)
             })
 
-            // fetch('./afdc_data_nyc_04_23_2022.geojson')
-            // .then((response) =>{
-            //     return response.json();
-            // })
-            // .then((data)=>{
-            //         console.log(data);
-            // });
+            fetch('./afdc_data_nyc_04_23_2022.geojson')
+            .then((response) =>{
+                return response.json();
+            })
+            .then((data)=>{
+                    console.log(data);
+            });
 
                        
             var baseMaps = {
@@ -1903,7 +1686,6 @@
         
            var overlayMaps = {
             "Num. EV Charging Outlets by ZIP": ZIPs_NYC_outlets,
-            "Pop Density (Pop/Sq Mi) by ZIP": ZIPs_NYC_pop_den,
             "Percent Asian by ZIP": ZIPs_NYC_asian,
             "Percent Black by ZIP": ZIPs_NYC_black,
             "Percent Hispanic by ZIP": ZIPs_NYC_hisp,
@@ -1995,11 +1777,6 @@
                     ZIPs_NYC_outlets.bringToFront();
                     legend_outlets_size.addTo(map_3);
                     legend_oultets_color.addTo(map_3);
-                }
-                else if  (eventLayer.name === 'Pop Density (Pop/Sq Mi) by ZIP') {
-                    ZIPs_NYC_outlets.bringToFront();
-                    map_3.removeControl(currentLegend);
-                    currentLegend = legend_pop_den;
                 }
             }) 
         </script>
