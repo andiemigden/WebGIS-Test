@@ -314,7 +314,7 @@
   
      </style>
 
-<title>Final Project</title>
+<title>EV Dashboard</title>
 <meta name="description" content="An interactive way to explore the EV industry in the US">
 <script>
     //EVENT FUNCTIONS
@@ -1816,17 +1816,17 @@
                 console.log(data);
                 console.log(data.features.length);
 
-                stationsApr_type.addData(data),
-                stationsApr_outlets.addData(data)
+                stationsApr_type.addData(data)
+                //stationsApr_outlets.addData(data)
             })
 
-            fetch('./afdc_data_nyc_04_23_2022.geojson')
-            .then((response) =>{
-                return response.json();
-            })
-            .then((data)=>{
-                    console.log(data);
-            });
+            // fetch('./afdc_data_nyc_04_23_2022.geojson')
+            // .then((response) =>{
+            //     return response.json();
+            // })
+            // .then((data)=>{
+            //         console.log(data);
+            // });
 
                        
             var baseMaps = {
