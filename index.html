@@ -698,7 +698,7 @@
                 return "#babab8"
             }
             if (count_evs>999.99){
-                return colIntpl(outlets_per_100evs)
+                return colIntpl_outlet(outlets_per_100evs)
             }
         }
 
@@ -740,12 +740,24 @@
             }
         
         ;    
-
         EVLayer.myExtraData = [maxVal, minVal, valRange,
             d3.scalePow()
                 .exponent(0.5)
                 .domain([0, maxVal])
                 .range([0, 20])];
+
+        EVLayer2.myExtraData_outlet = [maxVal_outlet, minVal_outlet, valRange_outlet,
+            d3.scalePow()
+                .exponent(0.5)
+                .domain([0, maxVal_outlet])
+                .range([0, 20])];
+       
+        EVLayer_pct.myExtraData_pct = [maxVal_pct, minVal_pct, valRange_pct,
+            d3.scalePow()
+                .exponent(0.5)
+                .domain([0, maxVal_pct])
+                .range([0, 20])];
+
         EVLayer.addData(data);
         EVLayer2.addData(data);
         EVLayer_pct.addData(data);
