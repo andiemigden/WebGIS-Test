@@ -631,16 +631,15 @@
     };
 
     var EVLayer = L.geoJSON(null, {
- 
         color: '#ffffff', 
         onEachFeature: onEachFeatureEVs,
-        }).addTo(map);
+        })//.addTo(map);
 
     var EVLayer2 = L.geoJSON(null, {
         
         color: '#ffffff', 
         onEachFeature: onEachFeatureEVs,
-    });
+    }).addTo(map);
 
     var EVLayer_pct = L.geoJSON(null, {    
         color: '#ffffff', 
@@ -652,7 +651,6 @@
         return response.json();
     })
     .then((data) => {
-
 
         console.log(data);
         var maxVal = -Infinity, minVal = Infinity;
