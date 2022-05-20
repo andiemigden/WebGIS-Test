@@ -950,7 +950,7 @@
         position: 'topleft',
         container: '',
         moveToLocation: (latlng, name, map_2) => {
-            USstatesLayerB.eachLayer((l) => {
+            EVLayer2.eachLayer((l) => {
                 if (turf.booleanPointInPolygon(turf.point([latlng.lng, latlng.lat]), l.feature)){
                     l.setStyle({ fillColor: "#555" });
 
@@ -1832,7 +1832,7 @@
                 position: 'topleft',
                 container: '',
                 moveToLocation: (latlng, name, map_3) => {
-                    USstatesLayerB.eachLayer((l) => {
+                    ZIPs_NYC_outlets.eachLayer((l) => {
                         if (turf.booleanPointInPolygon(turf.point([latlng.lng, latlng.lat]), l.feature)){
                             l.setStyle({ fillColor: "#555" });
         
