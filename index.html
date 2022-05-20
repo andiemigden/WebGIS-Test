@@ -341,16 +341,16 @@
 
 <body>
     <main>
-        <section id ="grid">
+        <section id="grid">
     
             <div class="box">
-                <div class = "box-content">
+                <div class ="box-content">
                     <h2>WELCOME TO THE ELECTRIC VEHICLE DASHBOARD</h2>
                 </div>
             </div>
     
             <div class="box">
-                <div class = "box-content">
+                <div class ="box-content">
                     <h3>MAP SUMMARY</h3>
                     <br>
                     <br>
@@ -366,21 +366,21 @@
             </div>
     
             <div class="box">                
-                <section id = "grid-for-map">
+                <section id="grid-for-map">
                     <div class="box-for-map">
-                        <div class = "box-for-map-content">
+                        <div class="box-for-map-content">
                             <div class="btn-group">
-                                <button type="button" class ="map-button w3-button w3-black"><b>EVs Per Million Population</b></button>
-                                <button type="button" class ="map-button-2 w3-button w3-cyan"><b>Number of and % Change in Outlets Per 100 EVs</b></button>
-                                <button type="button" class ="map-button-3 w3-button w3-red"><b>NYC EV Stats</b></button>
+                                <button type="button" class="map-button w3-button w3-black"><b>EVs Per Million Population</b></button>
+                                <button type="button" class="map-button-2 w3-button w3-cyan"><b>Number of and % Change in Outlets Per 100 EVs</b></button>
+                                <button type="button" class="map-button-3 w3-button w3-red"><b>NYC EV Stats</b></button>
                             </div>
                         </div>        
                     </div>
-                    <div class="box-for-map">
-                        <div class = "box-for-map-content" id="map">
-                            <div id="map" style="width: 100%; height: 100%; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
+                    <div class="box-for-map" id="map">
+                        <div class="box-for-map-content">
+                            <div style="width: 100%; height: 100%; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
                             leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
-                            <div class = "legend leaflet-control leaflet-bottom leaflet-left">
+                            <div class="legend leaflet-control leaflet-bottom leaflet-left">
                                 <h4>NUMBER OF EVS PER MILLION POPULATION</h4>
                                 <i style="background: #fff"></i> <!--  color for <750 (class 1)-->
                                 <span>Less than 750</span>
@@ -413,11 +413,11 @@
                         </div>
                     </div>
                     <!--this is the SECOND DIV that will be hidden unless button is clicked-->
-                    <div class="box-for-map">
-                        <div class = "box-for-map-content" id="map_2"> 
-                            <div id="map_2" style="width: 100%; height: 750px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
+                    <div class="box-for-map" id="map_2">
+                        <div class="box-for-map-content"> 
+                            <div style="width: 100%; height: 750px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
                             leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
-                            <div class = "legend leaflet-control leaflet-bottom leaflet-left">
+                            <div class="legend leaflet-control leaflet-bottom leaflet-left">
                                 <h4>NUMBER OF CHARGING OUTLETS PER 100 EVS</h4>
                                 <i style="background: #ccc"></i> <!--  color for <750 (class 1)-->
                                 <span>N/A: Less than 1,000 Total Registered EVs</span>
@@ -449,7 +449,7 @@
                                 <i style="background: #137"></i> <!--  color for 3,900 to 10,839 (class 9) -->
                                 <span>38 to 40</span>
                             </div>
-                            <div class = "legend leaflet-control leaflet-bottom leaflet-right">
+                            <div class="legend leaflet-control leaflet-bottom leaflet-right">
                                 <h4>% CHANGE IN NUM CHARING OUTLETS PER 100 EVS</h4>
                                 <i style="background: #f77"></i> 
                                 <span>DECREASE in Num Charging Outlets Per 100 EVs</span> 
@@ -482,11 +482,11 @@
                         </div>
                     </div>
                     <!--this is the THIRD DIV that will be hidden unless button is clicked-->
-                    <div class="box-for-map">
-                        <div class = "box-for-map-content" id="map_3"> 
-                            <div id="map_3" style="width: 100%; height: 750px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
+                    <div class="box-for-map" id="map_3">
+                        <div class="box-for-map-content"> 
+                            <div style="width: 100%; height: 750px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
                             leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
-                            <div class = "legend leaflet-control leaflet-bottom leaflet-left">
+                            <div class="legend leaflet-control leaflet-bottom leaflet-left">
                                 <h4>ZIP CODE BLUE AND GREEN OUTLINES</h4>
                                 <i style="background: #194D33"></i> 
                                 <span>IF NO L2 OR DCFC OUTLETS AVAIL</span>
@@ -502,13 +502,13 @@
             </div>
             </div>    
             <div class="box">
-                <div class = "box-content">
-                    <table class ='w3-table w3-round-large w3-border'>
+                <div class="box-content">
+                    <table class='w3-table w3-round-large w3-border'>
                         <thead>
                             <tr class="w3-teal">
                                 <strong>STATE LEVEL DATA</strong>
                             </br>
-                                <select id ="state_1" onchange="changeState()">
+                                <select id="state_1" onchange="changeState()">
                                     <option value>Select a State</option>
                                     <option value "AL">Alabama</option> <!--1-->
                                     <option value "AL">Alaska</option> <!--2-->
