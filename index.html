@@ -14,6 +14,8 @@
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
      crossorigin=""/>
+     <!--<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />-->
      
      <!--LEAFLET.JS-->
      <script
@@ -341,16 +343,16 @@
 
 <body>
     <main>
-        <section id="grid">
+        <section id ="grid">
     
             <div class="box">
-                <div class ="box-content">
+                <div class = "box-content">
                     <h2>WELCOME TO THE ELECTRIC VEHICLE DASHBOARD</h2>
                 </div>
             </div>
     
             <div class="box">
-                <div class ="box-content">
+                <div class = "box-content">
                     <h3>MAP SUMMARY</h3>
                     <br>
                     <br>
@@ -366,21 +368,21 @@
             </div>
     
             <div class="box">                
-                <section id="grid-for-map">
+                <section id = "grid-for-map">
                     <div class="box-for-map">
-                        <div class="box-for-map-content">
+                        <div class = "box-for-map-content">
                             <div class="btn-group">
-                                <button type="button" class="map-button w3-button w3-black"><b>EVs Per Million Population</b></button>
-                                <button type="button" class="map-button-2 w3-button w3-cyan"><b>Number of and % Change in Outlets Per 100 EVs</b></button>
-                                <button type="button" class="map-button-3 w3-button w3-red"><b>NYC EV Stats</b></button>
+                                <button type="button" class ="map-button w3-button w3-black"><b>EVs Per Million Population</b></button>
+                                <button type="button" class ="map-button-2 w3-button w3-cyan"><b>Number of and % Change in Outlets Per 100 EVs</b></button>
+                                <button type="button" class ="map-button-3 w3-button w3-red"><b>NYC EV Stats</b></button>
                             </div>
                         </div>        
                     </div>
-                    <div class="box-for-map" id="map">
-                        <div class="box-for-map-content">
-                            <div style="width: 200px; height: 300px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
+                    <div class="box-for-map">
+                        <div class = "box-for-map-content" id="map">
+                            <div id="map" style="width: 100%; height: 100%; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
                             leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
-                            <div class="legend leaflet-control leaflet-bottom leaflet-left" style="z-index: 500;">
+                            <div class = "legend leaflet-control leaflet-bottom leaflet-left">
                                 <h4>NUMBER OF EVS PER MILLION POPULATION</h4>
                                 <i style="background: #fff"></i> <!--  color for <750 (class 1)-->
                                 <span>Less than 750</span>
@@ -413,11 +415,11 @@
                         </div>
                     </div>
                     <!--this is the SECOND DIV that will be hidden unless button is clicked-->
-                    <div class="box-for-map" id="map_2">
-                        <div class="box-for-map-content"> 
-                            <div style="width: 200px; height: 300px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
+                    <div class="box-for-map">
+                        <div class = "box-for-map-content" id="map_2"> 
+                            <div id="map_2" style="width: 100%; height: 750px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
                             leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
-                            <div class="legend leaflet-control leaflet-bottom leaflet-left" style="z-index:500;">
+                            <div class = "legend leaflet-control leaflet-bottom leaflet-left">
                                 <h4>NUMBER OF CHARGING OUTLETS PER 100 EVS</h4>
                                 <i style="background: #ccc"></i> <!--  color for <750 (class 1)-->
                                 <span>N/A: Less than 1,000 Total Registered EVs</span>
@@ -449,7 +451,7 @@
                                 <i style="background: #137"></i> <!--  color for 3,900 to 10,839 (class 9) -->
                                 <span>38 to 40</span>
                             </div>
-                            <div class="legend leaflet-control leaflet-bottom leaflet-right" style="z-index: 500;">
+                            <div class = "legend leaflet-control leaflet-bottom leaflet-right">
                                 <h4>% CHANGE IN NUM CHARING OUTLETS PER 100 EVS</h4>
                                 <i style="background: #f77"></i> 
                                 <span>DECREASE in Num Charging Outlets Per 100 EVs</span> 
@@ -483,10 +485,10 @@
                     </div>
                     <!--this is the THIRD DIV that will be hidden unless button is clicked-->
                     <div class="box-for-map">
-                        <div class="box-for-map-content"id="map_3"> 
-                            <div style="width: 100%; height: 100%; position: relative; z-index: 500;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
+                        <div class = "box-for-map-content" id="map_3"> 
+                            <div id="map_3" style="width: 100%; height: 750px; position: relative;" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab
                             leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
-                            <div class="legend leaflet-control leaflet-bottom leaflet-left" style="z-index:500;">
+                            <div class = "legend leaflet-control leaflet-bottom leaflet-left">
                                 <h4>ZIP CODE BLUE AND GREEN OUTLINES</h4>
                                 <i style="background: #194D33"></i> 
                                 <span>IF NO L2 OR DCFC OUTLETS AVAIL</span>
@@ -502,13 +504,13 @@
             </div>
             </div>    
             <div class="box">
-                <div class="box-content">
-                    <table class='w3-table w3-round-large w3-border'>
+                <div class = "box-content">
+                    <table class ='w3-table w3-round-large w3-border'>
                         <thead>
                             <tr class="w3-teal">
                                 <strong>STATE LEVEL DATA</strong>
                             </br>
-                                <select id="state_1" onchange="changeState()">
+                                <select id ="state_1" onchange="changeState()">
                                     <option value>Select a State</option>
                                     <option value "AL">Alabama</option> <!--1-->
                                     <option value "AL">Alaska</option> <!--2-->
@@ -755,36 +757,36 @@
 
     var baseLayer_osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map_2);
     
-    // function onEachFeatureEVs(feature, layer) {
-    //     var popupContent = "<p><strong> State: </strong>" + feature.properties.state_1 +
-    //         "</br> <strong>April Ratio Outlets to 100 EVs: </strong>" + feature.properties.ap_ratio_1 +
-    //         "</br><strong> Pct Change Ratio Outlets to 100 EVs Feb - Apr: </strong>" + Math.round(feature.properties.change_p_1)+"%" +
-    //         "</br><strong> Num EVs: </strong>" + feature.properties.count_evs +
-    //         "</br><strong> EVs Per Million Population: </strong>" + Math.round(feature.properties.evs_per_mi) + "</p>";
+    function onEachFeatureEVs(feature, layer) {
+        var popupContent = "<p><strong> State: </strong>" + feature.properties.state_1 +
+            "</br> <strong>April Ratio Outlets to 100 EVs: </strong>" + feature.properties.ap_ratio_1 +
+            "</br><strong> Pct Change Ratio Outlets to 100 EVs Feb - Apr: </strong>" + Math.round(feature.properties.change_p_1)+"%" +
+            "</br><strong> Num EVs: </strong>" + feature.properties.count_evs +
+            "</br><strong> EVs Per Million Population: </strong>" + Math.round(feature.properties.evs_per_mi) + "</p>";
 
-    //     if (feature.properties && feature.properties.popupContent) {
-    //         popupContent += feature.attributes.popupContent;
-    //     }
+        if (feature.properties && feature.properties.popupContent) {
+            popupContent += feature.attributes.popupContent;
+        }
 
-    //     layer.bindPopup(popupContent);
+        layer.bindPopup(popupContent);
 
-    //     layer.on({
-    //         mouseover: function (e) {
-    //             e.target.setStyle({ color: "#f6ff00", weight: 3 }),
-    //             e.target.bindTooltip(feature.properties.state_1).openTooltip()},
-    //         mouseout: (e) => {
-    //             EVLayer2.resetStyle(e.target),
-    //             EVLayer2.closeTooltip(),
-    //             EVLayer2.closePopup()},
-    //         click: (e) => {
-    //             EVLayer2.closeTooltip()}
-    //     });             
-    // };
+        layer.on({
+            mouseover: function (e) {
+                e.target.setStyle({ color: "#f6ff00", weight: 3 }),
+                e.target.bindTooltip(feature.properties.state_1).openTooltip()},
+            mouseout: (e) => {
+                EVLayer2.resetStyle(e.target),
+                EVLayer2.closeTooltip(),
+                EVLayer2.closePopup()},
+            click: (e) => {
+                EVLayer2.closeTooltip()}
+        });             
+    };
 
     var EVLayer2 = L.geoJSON(null, {
  
         color: '#ffffff', 
-        onEachFeature: onEachFeatureEVs_3,
+        onEachFeature: onEachFeatureEVs,
         }).addTo(map_2);
 
         
@@ -794,6 +796,13 @@
         onEachFeature: onEachFeatureEVs_3,
      });
 
+    // $.getJSON("./MASTER_us_states.geojson", function (data) {
+
+    //     console.log(data);
+    //     //console.log(data.features.length);
+        
+    //     EVLayer2.addData(data);
+    // });
 
     fetch('./MASTER_us_states.geojson')
     .then((response) => {
@@ -843,7 +852,7 @@
                     return "#f2766f"
                 }
                 // if (count_evs>999.99){
-                return colIntpl_pct(change_p_1)
+                return colIntpl(change_p_1)
                 // }
             }
         
@@ -872,6 +881,53 @@
         });
     });
 
+    ///orig fetch pct
+
+    // fetch('./MASTER_us_states_2.geojson')
+    //     .then((response) => {
+    //         return response.json();
+    //     })
+    //     .then((data) => {
+    //         console.log(data);
+    //         var maxVal = -Infinity, minVal = Infinity;
+    //         var allVals = [];
+    
+    //         data.features.forEach((f, i) => {
+    //             if (f.properties.ap_ratio_1 > 0) {
+    //                 maxVal = Math.max(maxVal, f.properties.change_p_1);
+    //                 minVal = Math.min(minVal, f.properties.change_p_1);
+    //                 allVals.push(f.properties.change_p_1);
+    //             }
+    //         });  
+    //         var valRange = maxVal - minVal;
+    //         var colIntpl = d3.scaleQuantile()
+    //             .domain(allVals)
+    //             .range(d3.schemeBlues[9]);
+    
+    //         function styleColor(change_p_1,count_evs){                
+    //             if (change_p_1<0){
+    //                 return "#f2766f"
+    //             }
+    //             // if (count_evs>999.99){
+    //             return colIntpl(change_p_1)
+    //             // }
+    //         }    
+    //         data.features.forEach((f,i) =>{
+    //             EVLayer_pct.options.style = (f) => {
+    //                 return {
+    //                     fillColor: styleColor(f.properties.change_p_1,f.properties.count_evs),
+    //                     color: "#ffffff",
+    //                     weight: 1,
+    //                     fillOpacity: .8
+    //             };
+    //             }
+    //             EVLayer_pct.addData(data);
+    //     });
+    //     });
+
+
+    //end orig fetchn pct
+
     function onEachFeatureEVs_3(feature, layer) {
             var popupContent = "<p><strong> State: </strong>" + feature.properties.state_1 +
                 "</br><strong> Pct Change Ratio Outlets to 100 EVs Feb - Apr: </strong>" + Math.round(feature.properties.change_p_1).toFixed(2)+"%" +
@@ -892,13 +948,9 @@
                 mouseout: (e) => {
                     EVLayer_pct.resetStyle(e.target),
                     EVLayer_pct.closeTooltip(),
-                    EVLayer_pct.closePopup(),
-                    EVLayer2.resetStyle(e.target),
-                    EVLayer2.closeTooltip(),
-                    EVLayer2.closePopup()},
+                    EVLayer_pct.closePopup()},
                 click: (e) => {
-                    EVLayer_pct.closeTooltip(),
-                    EVLayer2.closeTooltip()}
+                    EVLayer_pct.closeTooltip()}
             });             
             };
     
@@ -1185,7 +1237,7 @@
             legend_outlets.onAdd = function (map_3) {
 
                 var div = L.DomUtil.create('div', 'info legend'),
-                    num_l2_dcf = [-0.01,0, 4, 10, 26],
+                    num_l2_dcf = [0,0, 4, 10, 26],
                     labels = ["Num L2 and DCFC Outlets"],
                     from, to;
 
@@ -1405,33 +1457,29 @@
             })
             
 
+            //ZIPS OUTLET LAYER
+            $.getJSON("./zips_select_NYC_CLEAN2.geojson", function (data) {
+        
+                console.log(data);
+                //console.log(data.features.length);
+                
+                ZIPs_NYC_outlets.addData(data);
+            });
+
             fetch('./zips_select_NYC_CLEAN2.geojson')
             .then((response) => {
                 return response.json();
             })
             .then((data) => {
                 console.log(data);
-                //instantiate L2 + DCFC
                 var maxVal = -Infinity, minVal = Infinity;
                 var allVals = [];
 
-                //instantiate Pop Density
-                var maxVal_pop_dens = -Infinity, minVal_pop_dens = Infinity;
-                var allVals_pop_dens = [];
-
                 data.features.forEach((f, i) => {
-                    //max, min, all vals for L2 + DCFC
                     maxVal = Math.max(maxVal, f.properties.num_l2_dcf);
                     minVal = Math.min(minVal, f.properties.num_l2_dcf);
                     allVals.push(f.properties.num_l2_dcf);
-
-                    //max, min, all vals for pop density
-                    maxVal_pop_dens = Math.max(maxVal_pop_dens, f.properties.Dens_Tot_P);
-                    minVal_pop_dens = Math.min(minVal, f.properties.Dens_Tot_P);
-                    allVals_pop_dens.push(f.properties.Dens_Tot_P);                    
-                });
-
-                //valRange L2 + DCFC and colIntpl for L2 + DCFC  
+                });  
                 var valRange = maxVal - minVal;
                 var colIntpl = d3.scaleQuantile()
                     .domain(allVals)
@@ -1444,14 +1492,47 @@
                     return colIntpl(num_l2_dcf)
                 }
 
-                //valRange Pop Density and colIntpl for Pop Density
-                var valRange_pop_dens = maxVal_pop_dens - minVal_pop_dens;
+                data.features.forEach((f,i) =>{
+                    ZIPs_NYC_outlets.options.style = (f) => {
+                        return {
+                            fillColor: styleColor(f.properties.num_l2_dcf),
+                            color: "#ffffff",
+                            weight: 1,
+                            fillOpacity: .8
+                    };
+                    }
+                    ZIPs_NYC_outlets.addData(data);
+                });
+            });
+            //END ZIPS OUTLET LAYER
 
-                var colIntpl_pop_dens = d3.scaleQuantile()
-                    .domain(allVals_pop_dens)
+            //ZIPS POP DENSITY LAYER    
+            $.getJSON("./zips_select_NYC_CLEAN2.geojson", function (data) {
+                console.log(data);
+                //console.log(data.features.length);
+
+                ZIPs_NYC_pop_den.addData(data);
+            });
+
+            fetch('./zips_select_NYC_CLEAN2.geojson')
+            .then((response) => {
+            return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                var maxVal = -Infinity, minVal = Infinity;
+                var allVals = [];
+
+                data.features.forEach((f, i) => {
+                    maxVal = Math.max(maxVal, f.properties.Dens_Tot_P);
+                    minVal = Math.min(minVal, f.properties.Dens_Tot_P);
+                    allVals.push(f.properties.Dens_Tot_P);
+                });  
+                var valRange = maxVal - minVal;
+                var colIntpl = d3.scaleQuantile()
+                    .domain(allVals)
                     .range(d3.schemePurples[7]);
 
-                //style function Pop Density
                 function styleOutline(num_l2_dcf){
                     if (num_l2_dcf==0){
                         return "#194D33"
@@ -1468,32 +1549,20 @@
                     }
                     return 1
                 }
-                
-                //loop through L2 + DCFC and Pop Density Layers
-                data.features.forEach((f,i) =>{
-                    ZIPs_NYC_outlets.options.style = (f) => {
-                        return {
-                            fillColor: styleColor(f.properties.num_l2_dcf),
-                            color: "#ffffff",
-                            weight: 1,
-                            fillOpacity: .8
-                        }
-                    };
 
+                data.features.forEach((f,i) =>{
                     ZIPs_NYC_pop_den.options.style = (f) => {
                         return {
-                            fillColor: colIntpl_pop_dens(f.properties.Dens_Tot_P),
+                            fillColor: colIntpl(f.properties.Dens_Tot_P),
                             color: styleOutline(f.properties.num_l2_dcf),
                             weight: styleWeight(f.properties.num_l2_dcf),
-                            fillOpacity: 0.9
-                        }
-                    }                                        
+                            fillOpacity: .9
+                    };
+                    }
+                    ZIPs_NYC_pop_den.addData(data);
                 });
-                
-                //Add data
-                ZIPs_NYC_outlets.addData(data);
-                ZIPs_NYC_pop_den.addData(data);
             });
+            //END ZIPS POP DENSITY LAYER
 
             //ZIPS PCT ASIAN LAYER    
             $.getJSON("./zips_select_NYC_CLEAN2.geojson", function (data) {
@@ -1764,8 +1833,6 @@
                 "Mapbox": baseLayer,
                 "OSM": baseLayer_osm
             };
-
-            var zip_LayerGroup1 = L.layerGroup([ZIPs_NYC_outlets, ZIPs_NYC_pop_den]);
         
            var overlayMaps = {
             "Num. EV Charging Outlets by ZIP": ZIPs_NYC_outlets,
@@ -1778,7 +1845,7 @@
            "EV Stations (Updated Apr 2022) by Type": stationsApr_type,
            }
         
-           var lC = L.control.layers(baseMaps, overlayMaps, zipLayerGroup1, {collapsed: true, hideSingleBase: true },).addTo(map_3);//.expand();
+           var lC = L.control.layers(baseMaps, overlayMaps, {collapsed: true, hideSingleBase: true },).addTo(map_3);//.expand();
         
             var lcDIVElem = lC.getContainer();
             document.addEventListener("keydown", (e) => {
@@ -1862,7 +1929,7 @@
                     legend_outlets_size.addTo(map_3);
                     legend_oultets_color.addTo(map_3);
                 }
-                else if  (eventLayer.name === ZIPs_NYC_pop_den) {
+                else if  (eventLayer.name === 'Pop Density (Pop/Sq Mi) by ZIP') {
                     ZIPs_NYC_outlets.bringToFront();
                     map_3.removeControl(currentLegend);
                     currentLegend = legend_pop_den;
